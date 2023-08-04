@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&display=swap');
+* {
+box-sizing: border-box;
+text-decoration: none;
+outline: none;
+margin: 0;
+padding: 0;
+list-style: none;
+border: none;
+}
+
+/*colors*/
+:root{
+  --bg-color: #e6eaf8;
+  --color-darkest:#9993bd;
+  --color-dark: #c6d6fb;
+  --color-light: #f1b1da;
+  --color-lightest: #fcc2b4;
+  --color-bg: #fcecf6;
+  --color-bg2: #f1f5fe;
+}
+
+a{
+  color:var(--color-darkest)
+}
+body {
+  background-color: var(--color-dark);
+  font-family: 'Montserrat', sans-serif;
+  color: #3f3d4a;
+}
+
+
+h1, h2, h3{
+  color: var(--color-darkest);
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  margin-top: 2rem;
+
+}
+/*layout*/
+
+.container{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.content-md{
+width: 500px;
+margin: 2rem auto;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+justify-content: center;
+align-items: center;
+background-color: #e6eaf8;
+border-radius: 15px ;
+padding: 2rem;
+box-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+.content-lg{
+  width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+  padding: 4rem;
+   position: relative;
+  
+   background-color: #e6eaf8;
+border-radius: 15px ;
+box-shadow: 1px 1px rgba(0,0,0,0.1);
+  }
+.form{
+  margin: 0 auto;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding:1rem;
+  border-radius: 5px;
+  gap: 2rem;
+  box-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+.form input, .form textarea, .form select{
+  
+  border-radius: 4px;
+  width: 100%;
+  background-color: #c6d6fb;
+  padding: 1rem;
+}
+.form button{
+    background-color: var(--color-darkest);
+    padding: 1rem 0.5rem;
+    color:#fff;
+    text-transform: uppercase;
+}
+
+.error{
+  border-radius: 4px;
+  width: 100%;
+  background-color: var(--color-light);
+  padding: 1rem;
+}
+
+.navbar{
+
+  display: flex;
+  justify-content: space-between;
+  padding:1rem 2rem;
+
+  margin: 0 auto;
+  align-items: center;
+  background-color: var(--color-bg);
+  box-shadow: 1px 1px rgba(0,0,0,0.1);
+  width: 600px;
+  border-radius: 0 0 50px 50px;
+  position: relative;
+}
+
+.brand{
+  width: 200px;
+}
+.brand img{
+  width: 100%;
+  background-size: cover;
+}
+.menu{
+  display: flex;
+  gap: 1rem;
+  color: #fff;;
+  padding: 1rem;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.menu li a{
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: var(--color-darkest);
+}
+.menu li button{
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: var(--color-darkest);
+    background: none;
+    border:none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.menu li a:hover{
+  color: var(--color-dark);
+}
+.menu li img{
+  border-radius: 50%;
+}
+.profile{
+display: flex;
+width: 200px;
+gap:0.2rem;
+justify-content: center;
+align-items: center;
+}
+
+.profile img{
+  width: 100%;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow:1px 1px 1px rgba(0,0,0,0.1);
+}
+.profile:hover >img {
+   border:2px dotted var(--color-darkest);
+}
+
+.button{
+  background-color: var(--color-bg);
+  border-radius: 5px;
+  box-shadow:1px 1px 1px rgba(0,0,0,0.3);
+  text-align: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.notify{
+  border-radius: 50%;
+  background-color: var(--color-light);
+  top:-10px;
+  right: -10px;
+  position: absolute;
+  padding: 0.5rem 1rem;
+  color:#fff;
+  box-shadow:1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.bg{
+  background-color: var(--color-darkest);
+
+}
+.bg a{
+  color: #e6eaf8;
+}
+.bg1{
+  background-color: var(--color-lightest);
+}
+.bg2{
+  background-color: var(--color-light);
+}
+.bg3{
+  background-color: var(--color-bg2);
+}
+
+
+.pet-card{
+  background-color: var(--color-bg);
+  border-radius: 5px;
+  box-shadow:1px 1px 1px rgba(0,0,0,0.3);
+  text-align: center;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+
+}
+.pet-card img{
+  margin: 0 auto;
+  width: 100%;
+  background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+  
+
+ .navbar{
+  flex-direction: column;
+  width: 300px;
+ }
+ .content-lg{
+  grid-template-columns: auto auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+ }
+ .content-md{
+  border-radius: 0;
+  width: 100%;
+ }
+.menu{
+  /* right: 0;
+  top:240px; */
+  position:relative;
+  top:-5px;
+  background-color:var(--color-bg);
+}
+
+}

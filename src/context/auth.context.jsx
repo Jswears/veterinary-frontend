@@ -15,7 +15,7 @@ const AuthContextWrapper = ({ children }) => {
       try {
         const response = await axios("http://localhost:5005/auth/verify", {
           // IF ERROR CAPITAL A
-          headers: { authorization: `Bearer ${tokenInStorage}` },
+          headers: { Authorization: `Bearer ${tokenInStorage}` },
         });
         setUser(response.data.currentUser);
         setIsLoading(false);
@@ -35,11 +35,16 @@ const AuthContextWrapper = ({ children }) => {
 
   const logoutHandle = () => {
     localStorage.removeItem("authToken");
+    authenticateUser()
     navigate("/login");
   };
 
+  const storeToken = (token) => {
+    localStorage.setItem("authToken", token);
+  }  
+
   return (
-    <AuthContext.Provider value={{ test: "Hello context works", authenticateUser }}>
+    <AuthContext.Provider value={{ storeToken, isLoading, isLoggedIn, user, authenticateUser, logoutHandle }}>
       {children}
     </AuthContext.Provider>
   );
