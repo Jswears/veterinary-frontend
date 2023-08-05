@@ -32,7 +32,7 @@ const NewPetPage = () => {
   return (
     <>
       <h1>Make new pet</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           Name:
           <input
