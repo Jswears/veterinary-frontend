@@ -10,6 +10,8 @@ import NewPetPage from "./pages/NewPetPage";
 import IsPrivate from "./components/IsPrivate";
 import { YourPetPage } from "./pages/YourPetPage";
 import IsAnon from "./components/IsAnon";
+import { PetDetailsPage } from "./pages/PetDetailsPage";
+import { EditPetPage } from "./pages/EditPetPage";
 
 const App = () => {
   return (
@@ -65,6 +67,19 @@ const App = () => {
             </IsPrivate>
           }
         />
+            <Route 
+        path="/editPet/:id"   
+        element={
+          <IsPrivate><EditPetPage /></IsPrivate>
+        } 
+        />
+        <Route 
+        path="/detailPet/:id"   
+        element={
+          <IsPrivate><PetDetailsPage /></IsPrivate>
+        } 
+        />
+
         <Route
           path="/new-pet"
           element={

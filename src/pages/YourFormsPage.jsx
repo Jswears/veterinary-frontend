@@ -22,6 +22,10 @@ const YourFormsPage = () => {
     fetchForms();
   }, []);
 
+ if( !forms  ){
+  return (<div>is loading</div>)
+ }
+else{
   return (
     <>
     <div className="container">
@@ -35,7 +39,7 @@ const YourFormsPage = () => {
          
             <div className="pet-card">
             <p>{form.request}</p> 
-            <h3>Patient Name: {form.petId.name}</h3>
+            <h3>Patient Name: { form.petId &&    form.petId.name}</h3>
           </div>
           </>
         );
@@ -44,6 +48,7 @@ const YourFormsPage = () => {
       </div>
     </>
   );
+    }
 };
 
 export default YourFormsPage;

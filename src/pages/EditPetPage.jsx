@@ -1,42 +1,59 @@
-import { useContext, useState } from "react";
+import axios from "axios"
+import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../context/auth.context";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-const NewPetPage = () => {
-
+export const EditPetPage = (props) => {
 
   const specieArr=["dog", "cat", "turtle", "rabbit"]
+    const {id}=   useParams('id')
+    const { user } = useContext(AuthContext);
 
-  const { user } = useContext(AuthContext);
 
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [specie, setSpecie] = useState("");
-  const [image, setImage] = useState("");
-  const [id, setId] = useState(user._id);
-  const [isDisabled, setIsDisabled] = useState(false);
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
+    const [specie, setSpecie] = useState('');
+    const [image, setImage] = useState('');
+    const [customerId, setCustomerId] = useState(user._id);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const getPet=async ()=>{
+        try {
+            const response =await axios.get(`http://localhost:5005/user/one-pet/${id}`)
+        
+            const onePet = response.data;
+            setName(onePet.name)
+            setAge(onePet.age)
+            setSpecie(onePet.specie)
+            setImage(onePet.image)
+           
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+        } catch (error) {
+            console.log(error)
+        }
+      
+    }
+    
+    
+      useEffect(() => {
+      getPet()
+      }, [])
+
+ const handleSubmit= async (e)=>{
+    e.preventDefault()
     try {
-      setIsDisabled(true);
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("age", age);
-      formData.append("specie", specie);
-      formData.append("customerId", id);
-      formData.append("image", image);
+    setIsDisabled(true);
 
-      const response = await axios.post(
-        "http://localhost:5005/user/new-pet",
+    const formData = {name, age, specie, image, customerId}
+
+    const response = await axios.put(
+        `http://localhost:5005/user/one-pet/${id}`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-          },
+          }
         }
       );
       if (response.status === 201) {
@@ -52,21 +69,23 @@ const NewPetPage = () => {
     } finally {
       setIsDisabled(false);
     }
-  };
+
+
+}    
 
   return (
     <>
       <div className="container">
         <div className="content-md">
-          <h1>Make new pet</h1>
+          <h1>Edit pet</h1>
           <form onSubmit={handleSubmit} className="form">
             <label>
               Name:
               <input
                 type="text"
-                value={name}
-                onChange={(event) => {
-                  setName(event.target.value);
+               value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
                 }}
               />
             </label>
@@ -74,7 +93,7 @@ const NewPetPage = () => {
               Age:
               <input
                 type="number"
-                value={age}
+               value={age}
                 onChange={(event) => {
                   setAge(event.target.value);
                 }}
@@ -88,7 +107,7 @@ const NewPetPage = () => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value='' selected></option>
+                <option value={specie} selected>{specie}</option>
                {specieArr.map(specie=>{
 
                  return (
@@ -112,13 +131,11 @@ const NewPetPage = () => {
               />
             </label>
             <button type="submit" disabled={isDisabled}>
-              Add
+              Update
             </button>
           </form>
         </div>
       </div>
     </>
-  );
-};
-
-export default NewPetPage;
+  )
+}
