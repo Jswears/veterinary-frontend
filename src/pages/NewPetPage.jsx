@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const NewPetPage = () => {
   const { user } = useContext(AuthContext);
+
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [specie, setSpecie] = useState("");
