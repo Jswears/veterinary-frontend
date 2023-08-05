@@ -1,11 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderOpen, faCat, faPaw, faFolderPlus,  } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from "../context/auth.context";
+import { useContext, useEffect } from "react";
 
 const HomePage = () => {
+const navigate=  useNavigate()
+  const { isLoggedIn } = useContext(AuthContext);
+  console.log(isLoggedIn)
+  useEffect(() => {
+    if(!isLoggedIn) {
+      navigate('/login')
+    }
+  }, [])
+  
 
   return (
     <>
+    {isLoggedIn &&
       <div className="content-lg">
               <div className="button">
               
@@ -26,7 +38,7 @@ const HomePage = () => {
                   <Link to={"/your-pets"}>  <FontAwesomeIcon icon={faCat} />  Your pets</Link>
                   </div> 
     </div>
-     
+}
 
     </>
   );

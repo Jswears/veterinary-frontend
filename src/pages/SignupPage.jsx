@@ -22,8 +22,8 @@ const SignupPage = () => {
     try {
       const requestBody = { fullname, email, password };
       const response = await axios.post(`${BASE_URL}/auth/signup`, requestBody);
-      console.log(response)
-      navigate('/login')
+      console.log(response);
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -32,20 +32,37 @@ const SignupPage = () => {
   return (
     <>
       <div className="container">
-    <div className="content-md">
-    <h1>Registration Form</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="fullname">Fullname:</label>
-        <input type="text" name="fullname" value={fullname} onChange={handleFullname} />
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
-        <button type="submit">Sign up!</button>
-      </form>
-      <p>Already registered? <Link to={'/login'} >Log in</Link></p>
-     </div>
- </div>
+        <div className="content-md">
+          <h1>Registration Form</h1>
+          <form onSubmit={handleSubmit} className="form">
+            <label htmlFor="fullname">Fullname:</label>
+            <input
+              type="text"
+              name="fullname"
+              value={fullname}
+              onChange={handleFullname}
+            />
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+            />
+            <button type="submit">Sign up!</button>
+          </form>
+          <p>
+            Already registered? <Link to={"/login"}>Log in</Link>
+          </p>
+        </div>
+      </div>
     </>
   );
 };

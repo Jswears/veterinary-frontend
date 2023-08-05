@@ -22,25 +22,29 @@ const YourFormsPage = () => {
     fetchForms();
   }, []);
 
-  return (
-    <>
-      <div className="container">
-        <h1>Your forms</h1>
-        <div className="content-lg">
-          {forms.map((form) => {
-            return (
-              <>
-                <div className="pet-card">
-                  <p>{form.request}</p>
-                  <h3>Patient Name: {form.petId.name}</h3>
-                </div>
-              </>
-            );
-          })}
+  if (!forms) {
+    return <div>is loading</div>;
+  } else {
+    return (
+      <>
+        <div className="container">
+          <h1>Your forms</h1>
+          <div className="content-lg">
+            {forms.map((form) => {
+              return (
+                <>
+                  <div className="pet-card">
+                    <p>{form.request}</p>
+                    <h3>Patient Name: {form.petId && form.petId.name}</h3>
+                  </div>
+                </>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default YourFormsPage;
