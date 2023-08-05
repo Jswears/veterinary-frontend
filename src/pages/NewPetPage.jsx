@@ -36,7 +36,7 @@ const NewPetPage = () => {
           <div className="container">
     <div className="content-md">
       <h1>Make new pet</h1>
-      <form onClick={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="form">
         <label>
           Name:
           <input

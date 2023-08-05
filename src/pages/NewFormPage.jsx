@@ -1,15 +1,34 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../context/auth.context";
 const NewFormPage = () => {
+  const { user } = useContext(AuthContext);
   const [request, setRequest] = useState("");
+  const [pets, setPets] = useState([])
+  const [petId, setPetId] = useState(null);
+  const [customerId, setCustomerId] = useState(user._id);
   const navigate = useNavigate();
+
+
+const getPets=async()=>{
+  const response= await axios.get(`http://localhost:5005/user/your-pets/${customerId}`)
+  console.log(response)
+  setPets(response.data)
+}
+ useEffect( () => {
+  getPets()
+
+
+ }, [])
+ 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5005/user/new-form", { request });
+      const response = await axios.post("http://localhost:5005/user/new-form", {
+        
+      request, customerId, petId });
       if (response.status === 201) {
         navigate("/your-forms");
       }
@@ -20,9 +39,11 @@ const NewFormPage = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+          <div className="container">
+    <div className="content-md">
+      <form onSubmit={handleSubmit} className="form">
         <label>
-          Form thingy:
+          Request:
           <textarea
             cols="30"
             rows="10"
@@ -32,8 +53,30 @@ const NewFormPage = () => {
             }}
           ></textarea>
         </label>
+        <label>Pet</label>
+        <select    onChange={(event) => {
+              setPetId(event.target.value);
+            }} >
+              <option value="" selected> </option>
+             {
+              pets.map(pet=>{
+
+                return(
+                  <>
+                      
+                  <option value={pet._id}> {pet.name} </option>
+                  </>
+                )
+
+              })
+
+             }
+
+        </select>
         <button type="submit">Submit Form</button>
       </form>
+      </div>
+      </div>
     </>
   );
 };

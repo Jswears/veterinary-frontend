@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import axios from "axios";
 
 const YourFormsPage = () => {
   const { user } = useContext(AuthContext);
@@ -9,7 +10,9 @@ const YourFormsPage = () => {
   const fetchForms = async () => {
     try {
       const response = await axios.get(`http://localhost:5005/user/your-forms/${id}`);
+
       setForms(response.data);
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -21,14 +24,24 @@ const YourFormsPage = () => {
 
   return (
     <>
-      <h1>All forms</h1>
+    <div className="container">
+       <h1>Your forms</h1>
+    <div className="content-lg">
+   
       {forms.map((form) => {
         return (
-          <div>
-            <h3>{form.title}</h3>
+          <>
+   
+         
+            <div className="pet-card">
+            <p>{form.request}</p> 
+            <h3>Patient Name: {form.petId.name}</h3>
           </div>
+          </>
         );
       })}
+      </div>
+      </div>
     </>
   );
 };
