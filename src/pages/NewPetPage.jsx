@@ -75,6 +75,7 @@ const NewPetPage = () => {
             }}
           />
         </label>
+        <button type="submit">Add Pet</button>
       </form>
     </>
   );
