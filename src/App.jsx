@@ -18,10 +18,14 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/new-form" element={<NewFormPage />} />
         <Route path="/your-forms" element={<YourFormsPage />} />
-        <Route path="/new-pet" element={   
-        <IsPrivate >
-           <NewPetPage />
-        </IsPrivate>} />
+        <Route
+          path="/new-pet"
+          element={
+            <IsPrivate>
+              <NewPetPage />
+            </IsPrivate>
+          }
+        />
       </Routes>
     </>
   );
