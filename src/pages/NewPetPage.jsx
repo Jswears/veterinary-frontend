@@ -34,7 +34,7 @@ const NewPetPage = () => {
   return (
     <>
       <h1>Make new pet</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label>
           Name:
           <input
