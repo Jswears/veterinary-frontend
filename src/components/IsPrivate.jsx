@@ -14,7 +14,10 @@ function IsPrivate({ children }) {
   //If the data has arrived and the user is still not logged IN, then redirect to the login page
   if (!isLoggedIn) {
     navigate("/login");
+  } else {
+    return children;
   }
+
 
   // ELse... return the child component.
   //Everything was ok
