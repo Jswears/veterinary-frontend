@@ -6,6 +6,7 @@ import "./App.css";
 import { NavBar } from "./components/NavBar";
 import NewFormPage from "./pages/NewFormPage";
 import YourFormsPage from "./pages/YourFormsPage";
+import NewPetPage from "./pages/NewPetPage";
 const App = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/new-form" element={<NewFormPage />} />
         <Route path="/your-forms" element={<YourFormsPage />} />
+        <Route path="/new-pet" element={<NewPetPage />} />
       </Routes>
     </>
   );
