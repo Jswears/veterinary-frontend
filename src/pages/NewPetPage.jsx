@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const NewPetPage = () => {
   const { user } = useContext(AuthContext);
+
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [specie, setSpecie] = useState("");
@@ -31,8 +33,10 @@ const NewPetPage = () => {
 
   return (
     <>
+          <div className="container">
+    <div className="content-md">
       <h1>Make new pet</h1>
-      <form>
+      <form onClick={handleSubmit} className="form">
         <label>
           Name:
           <input
@@ -73,7 +77,12 @@ const NewPetPage = () => {
             }}
           />
         </label>
+        <button type="submit">
+          Add 
+        </button>
       </form>
+      </div>
+      </div>
     </>
   );
 };
