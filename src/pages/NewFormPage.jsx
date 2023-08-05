@@ -9,7 +9,7 @@ const NewFormPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("", { request });
+      const response = await axios.post("http://localhost:5005/user/new-form", { request });
       if (response.status === 201) {
         navigate("/your-forms");
       }
@@ -26,7 +26,7 @@ const NewFormPage = () => {
           <textarea
             cols="30"
             rows="10"
-            value={form}
+            value={request}
             onChange={(event) => {
               setRequest(event.target.value);
             }}

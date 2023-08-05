@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const YourFormsPage = () => {
+  const { user } = useContext(AuthContext);
   const [forms, setForms] = useState([]);
+  const [id, setId] = useState(user._id);
 
   const fetchForms = async () => {
     try {
-      const response = await axios.get("");
+      const response = await axios.get(`http://localhost:5005/user/your-forms/${id}`);
       setForms(response.data);
     } catch (error) {
       console.log(error);
