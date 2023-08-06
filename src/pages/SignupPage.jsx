@@ -22,7 +22,6 @@ const SignupPage = () => {
     try {
       const requestBody = { fullname, email, password };
       const response = await axios.post(`${BASE_URL}/auth/signup`, requestBody);
-      console.log(response);
       navigate("/login");
     } catch (error) {
       console.log(error);

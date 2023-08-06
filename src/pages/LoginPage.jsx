@@ -12,9 +12,11 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5005/auth/login", { email, password });
+      const response = await axios.post("http://localhost:5005/auth/login", {
+        email,
+        password,
+      });
       storeToken(response.data.token);
-      console.log(response.data.token);
       authenticateUser();
       navigate("/");
     } catch (error) {
@@ -24,19 +26,31 @@ const LoginPage = () => {
 
   return (
     <>
-       <div className="container">
-    <div className="content-md">
-      <h1>Login </h1>
-      <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Sign in!</button>
-      </form>
-      <p>Not registered? <Link to={'/signup'} >Sign Up</Link></p>
+      <div className="container">
+        <div className="content-md">
+          <h1>Login </h1>
+          <form onSubmit={handleSubmit} className="form">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Sign in!</button>
+          </form>
+          <p>
+            Not registered? <Link to={"/signup"}>Sign Up</Link>
+          </p>
+        </div>
       </div>
- </div>
     </>
   );
 };

@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NewPetPage = () => {
-
-
-  const specieArr=["dog", "cat", "turtle", "rabbit"]
+  const specieArr = ["dog", "cat", "turtle", "rabbit"];
 
   const { user } = useContext(AuthContext);
 
@@ -88,18 +86,15 @@ const NewPetPage = () => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value='' selected></option>
-               {specieArr.map(specie=>{
-
-                 return (
-                  <>
-                  <option value={specie}>{specie}</option>
-                  </>
-                 )
-
-               })}
-
-                </select>
+                <option value=""></option>
+                {specieArr.map((specie) => {
+                  return (
+                    <option value={specie} key={specie}>
+                      {specie}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
             <label>
               Image:

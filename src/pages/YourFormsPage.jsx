@@ -9,10 +9,11 @@ const YourFormsPage = () => {
 
   const fetchForms = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/user/your-forms/${id}`);
+      const response = await axios.get(
+        `http://localhost:5005/user/your-forms/${id}`
+      );
 
       setForms(response.data);
-      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -22,33 +23,27 @@ const YourFormsPage = () => {
     fetchForms();
   }, []);
 
- if( !forms  ){
-  return (<div>is loading</div>)
- }
-else{
-  return (
-    <>
-    <div className="container">
-       <h1>Your forms</h1>
-    <div className="content-lg">
-   
-      {forms.map((form) => {
-        return (
-          <>
-   
-         
-            <div className="pet-card">
-            <p>{form.request}</p> 
-            <h3>Patient Name: { form.petId &&    form.petId.name}</h3>
+  if (!forms) {
+    return <div>is loading</div>;
+  } else {
+    return (
+      <>
+        <div className="container">
+          <h1>Your forms</h1>
+          <div className="content-lg">
+            {forms.map((form) => {
+              return (
+                <div className="pet-card" key={form._id}>
+                  <p>{form.request}</p>
+                  <h3>Patient Name: {form.petId && form.petId.name}</h3>
+                </div>
+              );
+            })}
           </div>
-          </>
-        );
-      })}
-      </div>
-      </div>
-    </>
-  );
-    }
+        </div>
+      </>
+    );
+  }
 };
 
 export default YourFormsPage;

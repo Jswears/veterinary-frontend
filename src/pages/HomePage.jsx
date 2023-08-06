@@ -7,7 +7,6 @@ import { useContext, useEffect } from "react";
 const HomePage = () => {
 const navigate=  useNavigate()
   const { isLoggedIn } = useContext(AuthContext);
-  console.log(isLoggedIn)
   useEffect(() => {
     if(!isLoggedIn) {
       navigate('/login')
