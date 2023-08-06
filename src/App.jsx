@@ -15,6 +15,7 @@ import { EditPetPage } from "./pages/EditPetPage";
 import AdminPanelPage from "./pages/AdminPanelPage";
 import AdminPetsPage from "./pages/AdminPetsPage";
 import AdminFormsPage from "./pages/AdminFormsPage";
+import AdminFeedbackPage from "./pages/AdminFeedbackPage";
 
 const App = () => {
   return (
@@ -97,6 +98,7 @@ const App = () => {
         <Route path="/admin" element={<AdminPanelPage />} />
         <Route path="/admin/all-pets" element={<AdminPetsPage />} />
         <Route path="/admin/all-forms" element={<AdminFormsPage />} />
+        <Route path="/admin/all-forms/:formId" element={<AdminFeedbackPage />} />
       </Routes>
     </>
   );
