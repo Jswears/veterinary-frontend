@@ -42,13 +42,13 @@ const AdminFeedbackPage = () => {
 
   return (
     <>
-      <div>
+          <div className="container">
+        <div className="content-md">
         <h1>Request</h1>
         <h3>{form.petId && form.petId.name}</h3>
         <p>{form.request}</p>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
+  
+        <form onSubmit={handleSubmit} className="form">
           <label>
             Diagnosis:
             <textarea
@@ -58,7 +58,7 @@ const AdminFeedbackPage = () => {
               onChange={(event) => setDiagnosis(event.target.value)}
             ></textarea>
           </label>
-          <br />
+      
           <label>
             Therapy:
             <input
@@ -67,7 +67,7 @@ const AdminFeedbackPage = () => {
               onChange={(event) => setTherapy(event.target.value)}
             />
           </label>
-          <br />
+  
           <label>
             Tips:
             <textarea
@@ -79,6 +79,7 @@ const AdminFeedbackPage = () => {
           </label>
           <button type="submit">Send Feedback</button>
         </form>
+      </div>
       </div>
     </>
   );

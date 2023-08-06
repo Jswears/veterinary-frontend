@@ -17,6 +17,7 @@ import AdminPetsPage from "./pages/AdminPetsPage";
 import AdminFormsPage from "./pages/AdminFormsPage";
 import AdminFeedbackPage from "./pages/AdminFeedbackPage";
 import IsAdmin from "./components/isAdmin";
+import { FeedbackPage } from "./pages/FeedbackPage";
 
 const App = () => {
   return (
@@ -69,6 +70,14 @@ const App = () => {
           element={
             <IsPrivate>
               <YourPetPage />
+            </IsPrivate>
+          }
+        />
+            <Route
+          path="/your-feedbacks"
+          element={
+            <IsPrivate>
+              <FeedbackPage/>
             </IsPrivate>
           }
         />

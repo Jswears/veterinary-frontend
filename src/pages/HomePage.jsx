@@ -1,22 +1,45 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolderOpen, faCat, faPaw, faFolderPlus } from "@fortawesome/free-solid-svg-icons";
+import { faFolderOpen, faCat, faPaw, faFolderPlus, faHistory } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/auth.context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
   // console.log(isLoggedIn)
+const [feedback, setFeedback] = useState([])
+
+//get feedback no read
+
+ const getFeedbackUnread=async()=>{
+
+
+      const response=await axios.get(`http://localhost:5005/user/feedbacks/${user._id}`)
+  
+      if(response.status===200){
+        setFeedback(response.data.filter(feed=>  feed.read===false))
+        
+      }
+
+ }
+
+
   useEffect(() => {
-    if (!isLoggedIn) {
+    getFeedbackUnread()
+    if (isLoggedIn && user.role==='admin') {
+      navigate("/admin");
+    }
+
+    else if (!isLoggedIn ) {
       navigate("/login");
     }
   }, []);
 
   return (
     <>
-      {isLoggedIn && (
+ 
         <div className="content-lg">
           <div className="button">
             <Link to="/new-form">
@@ -43,8 +66,19 @@ const HomePage = () => {
               <FontAwesomeIcon icon={faCat} /> Your pets
             </Link>
           </div>
+          <div className="button bg3">
+          { feedback.length >0 && 
+          <>
+          <div className="notify">{feedback.length}</div>  
+          </>
+          }
+     
+            <Link to={"/your-feedbacks"}>
+              <FontAwesomeIcon icon={faHistory} /> Your Feedbacks
+            </Link>
+          </div>
         </div>
-      )}
+  
     </>
   );
 };
