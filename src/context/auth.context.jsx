@@ -17,11 +17,11 @@ const AuthContextWrapper = (props) => {
           // IF ERROR CAPITAL A
           headers: { authorization: `Bearer ${tokenInStorage}` },
         });
-        console.log(response.data);
+        // console.log(response.data);
         setUser(response.data.currentUser);
         setIsLoading(false);
         setIsLoggedIn(true);
-        console.log(user);
+        // console.log(user);
       } catch (error) {
         console.log(error);
         setUser(null);
@@ -44,13 +44,10 @@ const AuthContextWrapper = (props) => {
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
+
   useEffect(() => {
     // Run the function after the initial render,
     // after the components in the App render for the first time.
-    authenticateUser();
-  }, []);
-
-  useEffect(() => {
     authenticateUser();
   }, []);
 

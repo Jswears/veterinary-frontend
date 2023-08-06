@@ -16,6 +16,7 @@ import AdminPanelPage from "./pages/AdminPanelPage";
 import AdminPetsPage from "./pages/AdminPetsPage";
 import AdminFormsPage from "./pages/AdminFormsPage";
 import AdminFeedbackPage from "./pages/AdminFeedbackPage";
+import IsAdmin from "./components/isAdmin";
 
 const App = () => {
   return (
@@ -95,10 +96,38 @@ const App = () => {
             </IsPrivate>
           }
         />
-        <Route path="/admin" element={<AdminPanelPage />} />
-        <Route path="/admin/all-pets" element={<AdminPetsPage />} />
-        <Route path="/admin/all-forms" element={<AdminFormsPage />} />
-        <Route path="/admin/all-forms/:formId" element={<AdminFeedbackPage />} />
+        <Route
+          path="/admin"
+          element={
+            <IsAdmin>
+              <AdminPanelPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-pets"
+          element={
+            <IsAdmin>
+              <AdminPetsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-forms"
+          element={
+            <IsAdmin>
+              <AdminFormsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-forms/:formId"
+          element={
+            <IsAdmin>
+              <AdminFeedbackPage />
+            </IsAdmin>
+          }
+        />
       </Routes>
     </>
   );
