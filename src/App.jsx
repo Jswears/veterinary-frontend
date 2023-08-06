@@ -12,6 +12,9 @@ import { YourPetPage } from "./pages/YourPetPage";
 import IsAnon from "./components/IsAnon";
 import { PetDetailsPage } from "./pages/PetDetailsPage";
 import { EditPetPage } from "./pages/EditPetPage";
+import AdminPanelPage from "./pages/AdminPanelPage";
+import AdminPetsPage from "./pages/AdminPetsPage";
+import AdminFormsPage from "./pages/AdminFormsPage";
 
 const App = () => {
   return (
@@ -83,7 +86,6 @@ const App = () => {
             </IsPrivate>
           }
         />
-
         <Route
           path="/new-pet"
           element={
@@ -92,6 +94,9 @@ const App = () => {
             </IsPrivate>
           }
         />
+        <Route path="/admin" element={<AdminPanelPage />} />
+        <Route path="/admin/all-pets" element={<AdminPetsPage />} />
+        <Route path="/admin/all-forms" element={<AdminFormsPage />} />
       </Routes>
     </>
   );
