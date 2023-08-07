@@ -15,11 +15,13 @@ const AuthContextWrapper = (props) => {
       try {
         const response = await axios("http://localhost:5005/auth/verify", {
           // IF ERROR CAPITAL A
-          headers: { Authorization: `Bearer ${tokenInStorage}` },
+          headers: { authorization: `Bearer ${tokenInStorage}` },
         });
+        // console.log(response.data);
         setUser(response.data.currentUser);
         setIsLoading(false);
         setIsLoggedIn(true);
+        // console.log(user);
       } catch (error) {
         console.log(error);
         setUser(null);
@@ -47,16 +49,10 @@ const AuthContextWrapper = (props) => {
     // after the components in the App render for the first time.
     authenticateUser();
   }, []);
+
   return (
     <AuthContext.Provider
-      value={{
-        storeToken,
-        isLoading,
-        isLoggedIn,
-        user,
-        authenticateUser,
-        logoutHandle,
-      }}
+      value={{ storeToken, isLoading, isLoggedIn, user, authenticateUser, logoutHandle }}
     >
       {props.children}
     </AuthContext.Provider>

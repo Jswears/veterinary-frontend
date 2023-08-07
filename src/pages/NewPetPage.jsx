@@ -28,15 +28,11 @@ const NewPetPage = () => {
       formData.append("customerId", id);
       formData.append("image", image);
 
-      const response = await axios.post(
-        "http://localhost:5005/user/new-pet",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost:5005/user/new-pet", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response.status === 201) {
         navigate("/");
         setName("");
@@ -86,12 +82,12 @@ const NewPetPage = () => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value=""></option>
+                <option value="" selected></option>
                 {specieArr.map((specie) => {
                   return (
-                    <option value={specie} key={specie}>
-                      {specie}
-                    </option>
+                    <>
+                      <option value={specie}>{specie}</option>
+                    </>
                   );
                 })}
               </select>

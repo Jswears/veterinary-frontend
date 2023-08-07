@@ -183,7 +183,15 @@ h3 {
   text-align: center;
   position: relative;
 }
-
+.small-button {
+  background-color: var(--color-dark);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  position: relative;
+}
 .notify {
   border-radius: 50%;
   background-color: var(--color-light);

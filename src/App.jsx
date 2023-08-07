@@ -12,6 +12,12 @@ import { YourPetPage } from "./pages/YourPetPage";
 import IsAnon from "./components/IsAnon";
 import { PetDetailsPage } from "./pages/PetDetailsPage";
 import { EditPetPage } from "./pages/EditPetPage";
+import AdminPanelPage from "./pages/AdminPanelPage";
+import AdminPetsPage from "./pages/AdminPetsPage";
+import AdminFormsPage from "./pages/AdminFormsPage";
+import AdminFeedbackPage from "./pages/AdminFeedbackPage";
+import IsAdmin from "./components/isAdmin";
+import { FeedbackPage } from "./pages/FeedbackPage";
 
 const App = () => {
   return (
@@ -67,25 +73,68 @@ const App = () => {
             </IsPrivate>
           }
         />
-            <Route 
-        path="/editPet/:id"   
-        element={
-          <IsPrivate><EditPetPage /></IsPrivate>
-        } 
+            <Route
+          path="/your-feedbacks"
+          element={
+            <IsPrivate>
+              <FeedbackPage/>
+            </IsPrivate>
+          }
         />
-        <Route 
-        path="/detailPet/:id"   
-        element={
-          <IsPrivate><PetDetailsPage /></IsPrivate>
-        } 
+        <Route
+          path="/editPet/:id"
+          element={
+            <IsPrivate>
+              <EditPetPage />
+            </IsPrivate>
+          }
         />
-
+        <Route
+          path="/detailPet/:id"
+          element={
+            <IsPrivate>
+              <PetDetailsPage />
+            </IsPrivate>
+          }
+        />
         <Route
           path="/new-pet"
           element={
             <IsPrivate>
               <NewPetPage />
             </IsPrivate>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <IsAdmin>
+              <AdminPanelPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-pets"
+          element={
+            <IsAdmin>
+              <AdminPetsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-forms"
+          element={
+            <IsAdmin>
+              <AdminFormsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/all-forms/:formId"
+          element={
+            <IsAdmin>
+              <AdminFeedbackPage />
+            </IsAdmin>
           }
         />
       </Routes>
