@@ -21,6 +21,8 @@ import { FeedbackPage } from "./pages/FeedbackPage";
 import { AdminFeedbacksPage } from "./pages/AdminFeedbacksPage";
 import { AdminComplainsPage } from "./pages/AdminComplainsPage";
 import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
+import StorePage from "./pages/StorePage";
+import MedDetailsPage from "./pages/MedDetailsPage";
 
 const App = () => {
   return (
@@ -113,6 +115,22 @@ const App = () => {
           element={
             <IsPrivate>
               <NewPetPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store"
+          element={
+            <IsPrivate>
+              <StorePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId"
+          element={
+            <IsPrivate>
+              <MedDetailsPage />
             </IsPrivate>
           }
         />
