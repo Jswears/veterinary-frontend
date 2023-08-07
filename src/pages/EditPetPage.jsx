@@ -38,10 +38,7 @@ export const EditPetPage = () => {
     try {
       setIsDisabled(true);
       const formData = { name, age, specie, image, customerId };
-      const response = await axios.put(
-        `${env.URL_BASE}/user/one-pet/${id}`,
-        formData
-      );
+      const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData);
       if (response.status === 201) {
         navigate("/");
         setName("");
@@ -91,6 +88,16 @@ export const EditPetPage = () => {
                   setSpecie(event.target.value);
                 }}
               >
+                <option value={specie} defaultValue="">
+                  {specie}
+                </option>
+                {specieArr.map((specie) => {
+                  return (
+                    <option value={specie} key={specie}>
+                      {specie}
+                    </option>
+                  );
+                })}
                 {specieArr.map((specie) => (
                   <option key={specie} value={specie}>
                     {specie}

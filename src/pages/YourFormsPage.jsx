@@ -32,12 +32,10 @@ const YourFormsPage = () => {
           <div className="content-lg">
             {forms.map((form) => {
               return (
-                <>
-                  <div className="pet-card">
-                    <p>{form.request}</p>
-                    <h3>Patient Name: {form.petId && form.petId.name}</h3>
-                  </div>
-                </>
+                <div className="pet-card" key={form._id}>
+                  <p>{form.request}</p>
+                  <h3>Patient Name: {form.petId && form.petId.name}</h3>
+                </div>
               );
             })}
           </div>
