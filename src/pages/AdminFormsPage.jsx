@@ -24,6 +24,18 @@ const AdminFormsPage = () => {
     fetchAllForms();
   }, []);
 
+const updateReadForm=async(id)=>{
+
+try {
+const response= await axios.patch(`${env.URL_BASE}/admin/form/${id}`)
+console.log(response)
+} catch (error) {
+  console.log(error)
+}
+
+}
+
+
   return (
     <>
 <div className="container">
@@ -37,7 +49,7 @@ const AdminFormsPage = () => {
             <FontAwesomeIcon icon={faMedkit} /> 
             <p>{form.request}</p>
             <div className="small-button">
-            <Link to={`/admin/all-forms/${form._id}`}> <FontAwesomeIcon icon={faReply} />    Give feedback</Link>
+            <Link to={`/admin/all-forms/${form._id}`}  onClick={()=>{updateReadForm(form._id)}}   > <FontAwesomeIcon icon={faReply} />    Give feedback</Link>
             </div>
         
             </div>
