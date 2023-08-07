@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import env from "../config";
+
 export const EditPetPage = (props) => {
   const specieArr = ["dog", "cat", "turtle", "rabbit"];
   const { id } = useParams("id");
@@ -16,21 +16,17 @@ export const EditPetPage = (props) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
 
-    const getPet=async ()=>{
-        try {
-            const response =await axios.get(`${env.URL_BASE}/user/one-pet/${id}`)
-        
-            const onePet = response.data;
-            setName(onePet.name)
-            setAge(onePet.age)
-            setSpecie(onePet.specie)
-            setImage(onePet.image)
-           
+  const getPet = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5005/user/one-pet/${id}`);
 
-        } catch (error) {
-            console.log(error)
-        }
-      
+      const onePet = response.data;
+      setName(onePet.name);
+      setAge(onePet.age);
+      setSpecie(onePet.specie);
+      setImage(onePet.image);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -45,15 +41,11 @@ export const EditPetPage = (props) => {
 
       const formData = { name, age, specie, image, customerId };
 
-    const response = await axios.put(
-        `${env.URL_BASE}/user/one-pet/${id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          }
-        }
-      );
+      const response = await axios.put(`http://localhost:5005/user/one-pet/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response.status === 201) {
         navigate("/");
         setName("");
@@ -103,14 +95,14 @@ export const EditPetPage = (props) => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value={specie} selected>
+                <option value={specie} defaultValue="">
                   {specie}
                 </option>
                 {specieArr.map((specie) => {
                   return (
-                    <>
-                      <option value={specie}>{specie}</option>
-                    </>
+                    <option value={specie} key={specie}>
+                      {specie}
+                    </option>
                   );
                 })}
               </select>

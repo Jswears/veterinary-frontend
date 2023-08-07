@@ -84,11 +84,7 @@ const NewPetPage = () => {
               >
                 <option value="" selected></option>
                 {specieArr.map((specie) => {
-                  return (
-                    <>
-                      <option value={specie}>{specie}</option>
-                    </>
-                  );
+                  return <option value={specie}>{specie}</option>;
                 })}
               </select>
             </label>

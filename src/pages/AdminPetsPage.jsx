@@ -28,7 +28,7 @@ const AdminPetsPage = () => {
               <div className="pet-card" key={pet._id}>
                 <h3>{pet.name}</h3>
                 <img src={pet.image} />
-                <h3>Owner: {pet.customerId.fullname} </h3>
+                <h3>Owner: {pet.customerId && pet.customerId.fullname} </h3>
                 <p>Age: {pet.age}</p>
                 <p>Specie: {pet.specie}</p>
               </div>
