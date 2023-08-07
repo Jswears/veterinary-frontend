@@ -9,7 +9,6 @@ const AdminFeedbackPage = () => {
   const [diagnosis, setDiagnosis] = useState("");
   const [terapy, setTerapy] = useState("");
   const [tips, setTips] = useState("");
-  const navigate = useNavigate();
 
   const fetchOneForm = async () => {
     try {
