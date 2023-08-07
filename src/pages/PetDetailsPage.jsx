@@ -13,7 +13,6 @@ const navigate=   useNavigate()
         try {
             const response =await axios.get(`${env.URL_BASE}/user/one-pet/${id}`)
             setPet(response.data)
-            console.log(response.data)
 
         } catch (error) {
             console.log(error)

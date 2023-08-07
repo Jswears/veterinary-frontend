@@ -14,7 +14,6 @@ const LoginPage = () => {
     try {
       const response = await axios.post(`${env.URL_BASE}/auth/login`, { email, password });
       storeToken(response.data.token);
-      console.log(response.data.token);
       authenticateUser();
       navigate("/");
     } catch (error) {

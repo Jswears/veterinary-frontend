@@ -161,7 +161,8 @@ h3 {
   font-size: 1.2rem;
   cursor: pointer;
 }
-.menu li a:hover, .menu li button:hover {
+.menu li a:hover,
+.menu li button:hover {
   color: var(--color-dark);
 }
 .menu li img {
@@ -194,9 +195,8 @@ h3 {
   text-align: center;
   position: relative;
 }
-.small-button{
+.small-button {
   padding: 1rem;
-
 }
 
 .small-button a {
@@ -210,9 +210,9 @@ h3 {
   color: var(--color-darkest);
   font-weight: bold;
 }
-.small-button a:hover{
+.small-button a:hover {
   background-color: var(--color-darkest);
-  color: #fff!important;
+  color: #fff !important;
 }
 .notify {
   border-radius: 50%;
@@ -241,7 +241,8 @@ h3 {
   background-color: var(--color-bg2);
 }
 
-.pet-card {
+.pet-card,
+.complaint-card {
   background-color: var(--color-bg);
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -252,7 +253,6 @@ h3 {
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
-
 }
 .pet-card img {
   margin: 0 auto;
@@ -277,23 +277,21 @@ h3 {
 .pet-card-detail img {
   margin: 0 auto;
   width: 100%;
-  
 }
 
-.sideRight{
+.sideRight {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   justify-content: start;
   text-align: left;
-
 }
-.buttons{
+.buttons {
   display: flex;
   gap: 1rem;
 }
 
-.buttonLink{
+.buttonLink {
   background-color: var(--color-darkest);
   color: var(--color-bg);
   border-radius: 5px;
@@ -302,10 +300,10 @@ h3 {
   padding: 1rem 0.5rem;
   text-align: center;
   cursor: pointer;
-  border:none;
+  border: none;
   font-size: 1rem;
 }
-.buttonLink:hover{
+.buttonLink:hover {
   background-color: var(--color-light);
 }
 @media screen and (max-width: 600px) {
