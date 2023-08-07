@@ -9,7 +9,7 @@ const FeedbackDetailsPage = () => {
   const fetchFeedback = async () => {
     try {
       const response = await axios.get(`http://localhost:5005/admin/feedback/${fbId}`);
-      if (response.status === 201) {
+      if (response.status === 200) {
         setFeedback(response.data);
       }
     } catch (error) {
@@ -23,12 +23,18 @@ const FeedbackDetailsPage = () => {
 
   return (
     <>
-      <h1>Feedback for {feedback.customerId && feedback.customerId.fullname}</h1>
-      <div>
-        <p>Diagnosis: {feedback.medicalHistory}</p>
-        <p>Therapy: {feedback.terapy}</p>
-        <p>Tips: {feedback.tips}</p>
+    <div className="container">
+    <h1>Feedback</h1>
+    <div className="content-lg">
+    <div className="pet-card-detail">
+        <p> <strong>Diagnosis:</strong>   {feedback.medicalHistory}</p>
+        <p><strong>Therapy:</strong>  {feedback.terapy}</p>
+        <p><strong>Tips:</strong>  {feedback.tips}</p>
       </div>
+    </div>
+      
+    </div>
+     
     </>
   );
 };
