@@ -9,10 +9,9 @@ const AdminFormsPage = () => {
   const fetchAllForms = async () => {
     try {
       const response = await axios.get("http://localhost:5005/admin/all-forms");
-    
+
       if (response.status === 200) {
-        setAllForms(response.data.filter(feed=>  feed.read===false))
-      
+        setAllForms(response.data.filter((feed) => feed.read === false));
       }
     } catch (error) {
       console.log(error);
@@ -25,27 +24,28 @@ const AdminFormsPage = () => {
 
   return (
     <>
-<div className="container">
-                   <h1>All Pending Forms</h1>
-          <div className="content-lg">
-      {allForms.map((form) => {
-        return (
-          <>
+      <div className="container">
+        <h1>All Pending Forms</h1>
+        <div className="content-lg">
+          {allForms.map((form) => {
+            return (
+              <>
                 <div className="pet-card">
-            <h3>Patient Name: {form.petId && form.petId.name}</h3>
-            <FontAwesomeIcon icon={faMedkit} /> 
-            <p>{form.request}</p>
-            <div className="small-button">
-            <Link to={`/admin/all-forms/${form._id}`}> <FontAwesomeIcon icon={faReply} />    Give feedback</Link>
-            </div>
-        
-            </div>
-         
-          </>
-        );
-      })}
-          </div>
-          </div>
+                  <h3>Patient Name: {form.petId && form.petId.name}</h3>
+                  <FontAwesomeIcon icon={faMedkit} />
+                  <p>{form.request}</p>
+                  <div className="small-button">
+                    <Link to={`/admin/all-forms/${form._id}`}>
+                      {" "}
+                      <FontAwesomeIcon icon={faReply} /> Give feedback
+                    </Link>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 };

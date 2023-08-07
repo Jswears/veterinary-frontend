@@ -75,11 +75,19 @@ const App = () => {
             </IsPrivate>
           }
         />
-            <Route
+        <Route
           path="/your-feedbacks"
           element={
             <IsPrivate>
-              <FeedbackPage/>
+              <FeedbackPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/your-feedbacks/:fbId"
+          element={
+            <IsPrivate>
+              <FeedbackDetailsPage />
             </IsPrivate>
           }
         />
@@ -131,7 +139,7 @@ const App = () => {
             </IsAdmin>
           }
         />
-          <Route
+        <Route
           path="/admin/all-feedbacks"
           element={
             <IsAdmin>
@@ -139,7 +147,7 @@ const App = () => {
             </IsAdmin>
           }
         />
-             <Route
+        <Route
           path="/admin/all-complains"
           element={
             <IsAdmin>

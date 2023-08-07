@@ -20,23 +20,21 @@ const AdminPetsPage = () => {
 
   return (
     <>
-        <div className="container">
+      <div className="container">
         <h1>All Registered Pets</h1>
- <div className="content-lg">
-
-      {allPets.map((pet) => {
-        return (
-          <div className="pet-card" key={pet._id}>
-            <h3>{pet.name}</h3>
-            <img src={pet.image} />
-            <h3>Owner:  {pet.customerId.fullname} </h3>
-            <p>Age: {pet.age}</p>
-            <p>Specie: {pet.specie}</p>
-           
-          </div>
-        );
-      })}
-      </div>
+        <div className="content-lg">
+          {allPets.map((pet) => {
+            return (
+              <div className="pet-card" key={pet._id}>
+                <h3>{pet.name}</h3>
+                <img src={pet.image} />
+                <h3>Owner: {pet.customerId.fullname} </h3>
+                <p>Age: {pet.age}</p>
+                <p>Specie: {pet.specie}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

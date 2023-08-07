@@ -1,50 +1,59 @@
-import axios from "axios"
+import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { Link } from "react-router-dom";
 
 export const FeedbackPage = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [feedbacks, setFeedbacks] = useState([]);
   const [id, setId] = useState(user._id);
 
-    const getFeedbacks=async ()=>{
-      const response= await axios.get(`http://localhost:5005/user/feedbacks/${id}`)
-         console.log(response)
-          setFeedbacks(response.data)
+  const getFeedbacks = async () => {
+    const response = await axios.get(`http://localhost:5005/user/feedbacks/${id}`);
+    console.log(response);
+    setFeedbacks(response.data);
+  };
 
+  const updateFeedbackRead = async (id) => {
+    try {
+      const response = await axios.patch(`http://localhost:5005/admin/feedback/${id}`, {
+        read: true,
+      });
+      if (response.status === 202) {
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-   
-        getFeedbacks()
-
-    }, [])
-    
-
+  useEffect(() => {
+    getFeedbacks();
+  }, []);
 
   return (
     <div className="container">
-        <h1>  Your Feedback from Clinic</h1>
-    
-        <div className="content-lg">
-         {
-           feedbacks.map(feedback=>{
+      <h1> Your Feedback from Clinic</h1>
 
-            return (
-                <>
-                  <div className="pet-card">
-                  <p>{feedback.formId.request}</p>
-                    <p>{feedback.medicalHistory}</p>
-                    <p>link to details</p>
-                  </div>
-                </>
-            )
-           })
-
-
-         }
-         </div>   
-
+      <div className="content-lg">
+        {feedbacks.map((feedback) => {
+          return (
+            <div className="pet-card" key={feedback._id}>
+              <p>{feedback.formId.request}</p>
+              <p>{feedback.medicalHistory}</p>
+              <Link to={`/your-feedbacks/${feedback._id}`}>
+                <button
+                  onClick={() => {
+                    updateFeedbackRead(feedback._id);
+                  }}
+                >
+                  Details
+                </button>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
