@@ -1,22 +1,20 @@
-import axios from "axios"
-import { useEffect, useState, useContext } from "react"
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import env from "../config";
 export const EditPetPage = (props) => {
+  const specieArr = ["dog", "cat", "turtle", "rabbit"];
+  const { id } = useParams("id");
+  const { user } = useContext(AuthContext);
 
-  const specieArr=["dog", "cat", "turtle", "rabbit"]
-    const {id}=   useParams('id')
-    const { user } = useContext(AuthContext);
-
-
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [specie, setSpecie] = useState('');
-    const [image, setImage] = useState('');
-    const [customerId, setCustomerId] = useState(user._id);
-    const [isDisabled, setIsDisabled] = useState(false);
-    const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [specie, setSpecie] = useState("");
+  const [image, setImage] = useState("");
+  const [customerId, setCustomerId] = useState(user._id);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const navigate = useNavigate();
 
     const getPet=async ()=>{
         try {
@@ -34,18 +32,18 @@ export const EditPetPage = (props) => {
         }
       
     }
-    
-    
-      useEffect(() => {
-      getPet()
-      }, [])
+  };
 
- const handleSubmit= async (e)=>{
-    e.preventDefault()
+  useEffect(() => {
+    getPet();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-    setIsDisabled(true);
+      setIsDisabled(true);
 
-    const formData = {name, age, specie, image, customerId}
+      const formData = { name, age, specie, image, customerId };
 
     const response = await axios.put(
         `${env.URL_BASE}/user/one-pet/${id}`,
@@ -69,9 +67,7 @@ export const EditPetPage = (props) => {
     } finally {
       setIsDisabled(false);
     }
-
-
-}    
+  };
 
   return (
     <>
@@ -83,7 +79,7 @@ export const EditPetPage = (props) => {
               Name:
               <input
                 type="text"
-               value={name}
+                value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -93,7 +89,7 @@ export const EditPetPage = (props) => {
               Age:
               <input
                 type="number"
-               value={age}
+                value={age}
                 onChange={(event) => {
                   setAge(event.target.value);
                 }}
@@ -107,18 +103,17 @@ export const EditPetPage = (props) => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value={specie} selected>{specie}</option>
-               {specieArr.map(specie=>{
-
-                 return (
-                  <>
-                  <option value={specie}>{specie}</option>
-                  </>
-                 )
-
-               })}
-
-                </select>
+                <option value={specie} selected>
+                  {specie}
+                </option>
+                {specieArr.map((specie) => {
+                  return (
+                    <>
+                      <option value={specie}>{specie}</option>
+                    </>
+                  );
+                })}
+              </select>
             </label>
             <label>
               Image:
@@ -137,5 +132,5 @@ export const EditPetPage = (props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
