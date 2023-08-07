@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import env from "../config";
 const AdminPetsPage = () => {
   const [allPets, setAllPets] = useState([]);
 
   const fetchAllPets = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/admin/all-pets");
+      const response = await axios.get(`${env.URL_BASE}/admin/all-pets`);
       setAllPets(response.data);
     } catch (error) {
       console.log(error);

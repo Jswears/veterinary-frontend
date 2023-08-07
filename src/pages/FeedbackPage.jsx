@@ -1,18 +1,16 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Link } from "react-router-dom";
-
+import env from "../config";
 export const FeedbackPage = () => {
   const { user } = useContext(AuthContext);
   const [feedbacks, setFeedbacks] = useState([]);
   const [id, setId] = useState(user._id);
 
-  const getFeedbacks = async () => {
-    const response = await axios.get(`http://localhost:5005/user/feedbacks/${id}`);
-    console.log(response);
-    setFeedbacks(response.data);
-  };
+    const getFeedbacks=async ()=>{
+      const response= await axios.get(`${env.URL_BASE}/user/feedbacks/${id}`)
+         console.log(response)
+          setFeedbacks(response.data)
 
   const updateFeedbackRead = async (id) => {
     try {
