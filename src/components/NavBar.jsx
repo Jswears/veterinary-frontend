@@ -2,6 +2,9 @@ import { useContext } from "react";
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
 export const NavBar = () => {
   const { isLoggedIn, logoutHandle } = useContext(AuthContext);
 
@@ -33,8 +36,8 @@ export const NavBar = () => {
                     logoutHandle();
                   }}
                 >
-                  {" "}
-                  Logout
+           
+                  Logout     <FontAwesomeIcon icon={faRightFromBracket} /> 
                 </button>
               </li>
             </>

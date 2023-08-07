@@ -32,7 +32,7 @@ const AdminPetsPage = () => {
             <h3>Owner:  {pet.customerId.fullname} </h3>
             <p>Age: {pet.age}</p>
             <p>Specie: {pet.specie}</p>
-            <p>link to medical history</p>
+           
           </div>
         );
       })}
