@@ -20,6 +20,7 @@ import IsAdmin from "./components/isAdmin";
 import { FeedbackPage } from "./pages/FeedbackPage";
 import { AdminFeedbacksPage } from "./pages/AdminFeedbacksPage";
 import { AdminComplainsPage } from "./pages/AdminComplainsPage";
+import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
 
 const App = () => {
   return (
