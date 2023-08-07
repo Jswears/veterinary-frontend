@@ -71,10 +71,12 @@ const HomePage = () => {
               <div className="notify">{feedback.length}</div>
             </>
           )}
-
           <Link to={"/your-feedbacks"}>
             <FontAwesomeIcon icon={faHistory} /> Your Feedbacks
           </Link>
+        </div>
+        <div className="button bg2">
+          <Link to={"/store"}> Store</Link>
         </div>
       </div>
     </>
