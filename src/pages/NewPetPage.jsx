@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import env from "../config";
 const NewPetPage = () => {
   const specieArr = ["dog", "cat", "turtle", "rabbit"];
 
@@ -28,7 +28,7 @@ const NewPetPage = () => {
       formData.append("customerId", id);
       formData.append("image", image);
 
-      const response = await axios.post("http://localhost:5005/user/new-pet", formData, {
+      const response = await axios.post(`${env.URL_BASE}/user/new-pet`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

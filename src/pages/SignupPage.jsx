@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import env from "../config";
 
-const BASE_URL = "http://localhost:5005";
 
 const SignupPage = () => {
   const [fullname, setFullname] = useState("");
@@ -21,7 +21,8 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       const requestBody = { fullname, email, password };
-      const response = await axios.post(`${BASE_URL}/auth/signup`, requestBody);
+      const response = await axios.post(`${env.URL_BASE}/auth/signup`, requestBody);
+      console.log(response);
       navigate("/login");
     } catch (error) {
       console.log(error);

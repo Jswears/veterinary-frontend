@@ -2,12 +2,12 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import env from "../config";
 
-export const EditPetPage = (props) => {
+export const EditPetPage = () => {
   const specieArr = ["dog", "cat", "turtle", "rabbit"];
-  const { id } = useParams("id");
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
-
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [specie, setSpecie] = useState("");
@@ -18,10 +18,7 @@ export const EditPetPage = (props) => {
 
   const getPet = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/user/one-pet/${id}`
-      );
-
+      const response = await axios.get(`${env.URL_BASE}/user/one-pet/${id}`);
       const onePet = response.data;
       setName(onePet.name);
       setAge(onePet.age);
@@ -40,17 +37,10 @@ export const EditPetPage = (props) => {
     e.preventDefault();
     try {
       setIsDisabled(true);
-
       const formData = { name, age, specie, image, customerId };
-
       const response = await axios.put(
-        `http://localhost:5005/user/one-pet/${id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        `${env.URL_BASE}/user/one-pet/${id}`,
+        formData
       );
       if (response.status === 201) {
         navigate("/");
@@ -96,21 +86,16 @@ export const EditPetPage = (props) => {
             <label>
               Species:
               <select
-                type="text"
+                value={specie}
                 onChange={(event) => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value={specie} defaultValue="">
-                  {specie}
-                </option>
-                {specieArr.map((specie) => {
-                  return (
-                    <option value={specie} key={specie}>
-                      {specie}
-                    </option>
-                  );
-                })}
+                {specieArr.map((specie) => (
+                  <option key={specie} value={specie}>
+                    {specie}
+                  </option>
+                ))}
               </select>
             </label>
             <label>
@@ -132,3 +117,5 @@ export const EditPetPage = (props) => {
     </>
   );
 };
+
+export default EditPetPage;
