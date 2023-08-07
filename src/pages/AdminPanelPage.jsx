@@ -8,40 +8,41 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import env from "../config";
+
 const AdminPanelPage = () => {
   const [forms, setForms] = useState([]);
 
-  //get feedback no read
+  // Get forms with no read
 
   const getFormUnread = async () => {
-    const response = await axios.get(`http://localhost:5005/admin/all-forms`);
+    const response = await axios.get(`${env.URL_BASE}/admin/all-forms`);
 
     if (response.status === 200) {
       setForms(response.data.filter((form) => form.read === false));
     }
   };
+
   const [feedback, setFeedback] = useState([]);
 
-  //get feedback no read
-
+  // Get feedback with no read
   const getFeedbackUnread = async () => {
-    const response = await axios.get(
-      `http://localhost:5005/admin/all-feedback`
-    );
+    const response = await axios.get(`${env.URL_BASE}/admin/all-feedback`);
 
     if (response.status === 200) {
       setFeedback(response.data.filter((feed) => feed.read === false));
     }
   };
 
-  const [complaint, setComplaint] = useState();
+  const [complaint, setComplaint] = useState([]);
+  // Get complaints with no read
   const getComplaintsUnread = async () => {
-    const response = await axios.get(
-      `http://localhost:5005/admin/all-complaints`
-    );
+    const response = await axios.get(`${env.URL_BASE}/admin/all-complaints`);
 
     if (response.status === 200) {
-      setComplaint(response.data.filter((form) => form.read === false));
+      setComplaint(
+        response.data.filter((complaint) => complaint.read === false)
+      );
     }
   };
 
@@ -87,14 +88,14 @@ const AdminPanelPage = () => {
             </Link>
           </div>
           <div className="button bg3">
-            {complaint?.length > 0 && (
+            {complaint.length > 0 && (
               <>
                 <div className="notify">{complaint.length}</div>
               </>
             )}
             <Link to="/admin/all-complaints">
               {" "}
-              <FontAwesomeIcon icon={faFaceAngry} /> Complains
+              <FontAwesomeIcon icon={faFaceAngry} /> Complaints
             </Link>
           </div>
         </div>

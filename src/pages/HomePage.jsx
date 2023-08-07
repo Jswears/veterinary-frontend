@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
+import env from "../config";
 import axios from "axios";
 
 const HomePage = () => {
@@ -48,7 +49,6 @@ const HomePage = () => {
             <FontAwesomeIcon icon={faFolderPlus} /> New Form
           </Link>
         </div>
-
         <div className="button bg">
           <Link to="/your-forms">
             {" "}
@@ -82,6 +82,10 @@ const HomePage = () => {
           <Link to={"/complaints"}>
             <FontAwesomeIcon icon={faFaceAngry} /> Complaints
           </Link>
+        </div>{" "}
+        {/* Missing closing tag */}
+        <div className="button bg2">
+          <Link to={"/store"}> Store</Link>
         </div>
       </div>
     </>

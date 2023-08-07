@@ -1,11 +1,11 @@
 import axios from "axios"
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-
+import env from "../config";
 export const AdminFeedbacksPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const getFeedbacks=async ()=>{
-        const response= await axios.get(`http://localhost:5005/admin/all-feedback/`)
+        const response= await axios.get(`${env.URL_BASE}/admin/all-feedback/`)
            console.log(response)
             setFeedbacks(response.data)
   

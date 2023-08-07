@@ -21,6 +21,9 @@ import { FeedbackPage } from "./pages/FeedbackPage";
 import { AdminFeedbacksPage } from "./pages/AdminFeedbacksPage";
 import { AdminComplaintsPage } from "./pages/AdminComplaintsPage";
 import ComplaintsPage from "./pages/ComplaintsPage";
+import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
+import StorePage from "./pages/StorePage";
+import MedDetailsPage from "./pages/MedDetailsPage";
 
 const App = () => {
   return (
@@ -85,6 +88,14 @@ const App = () => {
           }
         />
         <Route
+          path="/your-feedbacks/:fbId"
+          element={
+            <IsPrivate>
+              <FeedbackDetailsPage />
+            </IsPrivate>
+          }
+        />
+        <Route
           path="/editPet/:id"
           element={
             <IsPrivate>
@@ -108,11 +119,27 @@ const App = () => {
             </IsPrivate>
           }
         />
-        <Route
+                <Route
           path={"/complaints"}
           element={
             <IsPrivate>
               <ComplaintsPage />
+            </IsPrivate>
+          }
+        />
+                <Route
+          path="/store"
+          element={
+            <IsPrivate>
+              <StorePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId"
+          element={
+            <IsPrivate>
+              <MedDetailsPage />
             </IsPrivate>
           }
         />
