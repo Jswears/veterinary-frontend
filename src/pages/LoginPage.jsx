@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import env from "../config";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5005/auth/login", { email, password });
+      const response = await axios.post(`${env.URL_BASE}/auth/login`, { email, password });
       storeToken(response.data.token);
       console.log(response.data.token);
       authenticateUser();

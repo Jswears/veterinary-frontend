@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen, faPaw, faHistory, faFaceAngry} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import env from "../config";
 const AdminPanelPage = () => {
 
   const [forms, setForms] = useState([])
@@ -12,7 +13,7 @@ const AdminPanelPage = () => {
  const getFormUnread=async()=>{
 
 
-      const response=await axios.get(`http://localhost:5005/admin/all-forms`)
+      const response=await axios.get(`${env.URL_BASE}/admin/all-forms`)
   
       if(response.status===200){
         setForms(response.data.filter(form=>  form.read===false))
@@ -27,7 +28,7 @@ const AdminPanelPage = () => {
   const getFeedbackUnread=async()=>{
  
  
-       const response=await axios.get(`http://localhost:5005/admin/all-feedback`)
+       const response=await axios.get(`${env.URL_BASE}/admin/all-feedback`)
    
        if(response.status===200){
          setFeedback(response.data.filter(feed=>  feed.read===false))

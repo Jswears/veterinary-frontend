@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import env from "../config";
 export const EditPetPage = (props) => {
 
   const specieArr=["dog", "cat", "turtle", "rabbit"]
@@ -20,7 +20,7 @@ export const EditPetPage = (props) => {
 
     const getPet=async ()=>{
         try {
-            const response =await axios.get(`http://localhost:5005/user/one-pet/${id}`)
+            const response =await axios.get(`${env.URL_BASE}/user/one-pet/${id}`)
         
             const onePet = response.data;
             setName(onePet.name)
@@ -48,7 +48,7 @@ export const EditPetPage = (props) => {
     const formData = {name, age, specie, image, customerId}
 
     const response = await axios.put(
-        `http://localhost:5005/user/one-pet/${id}`,
+        `${env.URL_BASE}/user/one-pet/${id}`,
         formData,
         {
           headers: {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import env from "../config";
 const AdminFeedbackPage = () => {
 
   const navigate =useNavigate()
@@ -13,7 +13,7 @@ const AdminFeedbackPage = () => {
 
   const fetchOneForm = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/admin/form/${formId}`);
+      const response = await axios.get(`${env.URL_BASE}/admin/form/${formId}`);
       setForm(response.data);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const AdminFeedbackPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5005/admin/new-feedback", {
+      const response = await axios.post(`${env.URL_BASE}/admin/new-feedback`, {
         medicalHistory: diagnosis,
         terapy,
         tips,

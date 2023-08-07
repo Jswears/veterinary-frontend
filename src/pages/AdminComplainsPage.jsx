@@ -1,5 +1,5 @@
 
-
+import env from "../config"
 export const AdminComplainsPage = () => {
   return (
     <div className="container">

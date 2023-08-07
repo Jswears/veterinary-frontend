@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import env from "../config";
 export const PetDetailsPage = () => {
 const {id}=   useParams('id')
 const navigate=   useNavigate()
@@ -11,7 +11,7 @@ const navigate=   useNavigate()
     
     const getPet=async ()=>{
         try {
-            const response =await axios.get(`http://localhost:5005/user/one-pet/${id}`)
+            const response =await axios.get(`${env.URL_BASE}/user/one-pet/${id}`)
             setPet(response.data)
             console.log(response.data)
 
@@ -29,7 +29,7 @@ const navigate=   useNavigate()
  const handleDelete=async(id)=>{
 
 try {
-    const response=await axios.delete(`http://localhost:5005/user/one-pet/${id}`)
+    const response=await axios.delete(`${env.URL_BASE}/user/one-pet/${id}`)
      
     console.log(response) 
     navigate('/')

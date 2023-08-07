@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen, faCat, faPaw, faFolderPlus, faHistory } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
+import env from "../config";
 import axios from "axios";
 
 const HomePage = () => {
@@ -16,7 +17,7 @@ const [feedback, setFeedback] = useState([])
  const getFeedbackUnread=async()=>{
 
 
-      const response=await axios.get(`http://localhost:5005/user/feedbacks/${user._id}`)
+      const response=await axios.get(`${env.URL_BASE}/user/feedbacks/${user._id}`)
   
       if(response.status===200){
         setFeedback(response.data.filter(feed=>  feed.read===false))
