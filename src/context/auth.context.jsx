@@ -44,7 +44,6 @@ const AuthContextWrapper = (props) => {
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
-
   useEffect(() => {
     // Run the function after the initial render,
     // after the components in the App render for the first time.
@@ -53,7 +52,14 @@ const AuthContextWrapper = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ storeToken, isLoading, isLoggedIn, user, authenticateUser, logoutHandle }}
+      value={{
+        storeToken,
+        isLoading,
+        isLoggedIn,
+        user,
+        authenticateUser,
+        logoutHandle,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

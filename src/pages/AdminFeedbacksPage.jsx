@@ -1,6 +1,6 @@
 import axios from "axios"
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../context/auth.context";
+import { useEffect, useState } from "react";
+
 import env from "../config";
 export const AdminFeedbacksPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
