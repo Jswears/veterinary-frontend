@@ -45,14 +45,10 @@ export const FeedbackPage = () => {
             <div className="pet-card" key={feedback._id}>
               <p>{feedback.formId.request}</p>
               <p>{feedback.medicalHistory}</p>
-              <Link to={`/your-feedbacks/${feedback._id}`}>
-                <button
-                  onClick={() => {
+              <Link to={`/your-feedbacks/${feedback._id}`}      onClick={() => {
                     updateFeedbackRead(feedback._id);
-                  }}
-                >
+                  }}>
                   Details
-                </button>
               </Link>
             </div>
           );
