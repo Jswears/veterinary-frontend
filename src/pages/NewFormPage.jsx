@@ -7,7 +7,6 @@ const NewFormPage = () => {
   const { user } = useContext(AuthContext);
   const [request, setRequest] = useState("");
   const [pets, setPets] = useState([]);
-  const [pets, setPets] = useState([]);
   const [petId, setPetId] = useState(null);
   const [customerId, setCustomerId] = useState(user._id);
   const navigate = useNavigate();
