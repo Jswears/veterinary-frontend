@@ -24,6 +24,7 @@ import ComplaintsPage from "./pages/ComplaintsPage";
 import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
 import StorePage from "./pages/StorePage";
 import MedDetailsPage from "./pages/MedDetailsPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
   return (
@@ -140,6 +141,14 @@ const App = () => {
           element={
             <IsPrivate>
               <MedDetailsPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId/checkout"
+          element={
+            <IsPrivate>
+              <CheckoutPage />
             </IsPrivate>
           }
         />
