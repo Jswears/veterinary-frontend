@@ -24,6 +24,9 @@
 a {
   color: var(--color-darkest);
 }
+a:hover {
+  color: var(--color-dark);
+}
 body {
   background-color: var(--color-dark);
   font-family: "Montserrat", sans-serif;
@@ -62,16 +65,16 @@ h3 {
   width: 600px;
   margin: 2rem auto;
   display: grid;
+  grid-template-columns: 50% 50%;
   gap: 2rem;
   align-items: center;
-  grid-template-columns: 50% 50%;
   padding: 4rem;
   position: relative;
-
   background-color: #e6eaf8;
   border-radius: 15px;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 }
+
 .form {
   margin: 0 auto;
   width: 100%;
@@ -96,8 +99,15 @@ h3 {
   padding: 1rem 0.5rem;
   color: #fff;
   text-transform: uppercase;
+  cursor: pointer;
 }
-
+.form button:hover {
+  background-color: var(--color-light);
+  padding: 1rem 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 .error {
   border-radius: 4px;
   width: 100%;
@@ -149,8 +159,9 @@ h3 {
   border: none;
   font-weight: bold;
   font-size: 1.2rem;
+  cursor: pointer;
 }
-.menu li a:hover {
+.menu li a:hover, .menu li button:hover {
   color: var(--color-dark);
 }
 .menu li img {
@@ -183,14 +194,25 @@ h3 {
   text-align: center;
   position: relative;
 }
-.small-button {
-  background-color: var(--color-dark);
+.small-button{
+  padding: 1rem;
+
+}
+
+.small-button a {
+  background-color: var(--color-light);
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   text-align: center;
   padding: 1rem 1.2rem;
   text-align: center;
-  position: relative;
+  cursor: pointer;
+  color: var(--color-darkest);
+  font-weight: bold;
+}
+.small-button a:hover{
+  background-color: var(--color-darkest);
+  color: #fff!important;
 }
 .notify {
   border-radius: 50%;
@@ -230,6 +252,7 @@ h3 {
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
+
 }
 .pet-card img {
   margin: 0 auto;
@@ -291,7 +314,7 @@ h3 {
     width: 300px;
   }
   .content-lg {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     width: 100%;
     justify-content: center;
     align-items: center;

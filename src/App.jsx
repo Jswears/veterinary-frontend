@@ -18,6 +18,8 @@ import AdminFormsPage from "./pages/AdminFormsPage";
 import AdminFeedbackPage from "./pages/AdminFeedbackPage";
 import IsAdmin from "./components/isAdmin";
 import { FeedbackPage } from "./pages/FeedbackPage";
+import { AdminFeedbacksPage } from "./pages/AdminFeedbacksPage";
+import { AdminComplainsPage } from "./pages/AdminComplainsPage";
 
 const App = () => {
   return (
@@ -126,6 +128,22 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminFormsPage />
+            </IsAdmin>
+          }
+        />
+          <Route
+          path="/admin/all-feedbacks"
+          element={
+            <IsAdmin>
+              <AdminFeedbacksPage />
+            </IsAdmin>
+          }
+        />
+             <Route
+          path="/admin/all-complains"
+          element={
+            <IsAdmin>
+              <AdminComplainsPage />
             </IsAdmin>
           }
         />
