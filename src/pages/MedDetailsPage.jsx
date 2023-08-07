@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MedDetailsPage = () => {
   const [medDetails, setMedDetails] = useState({});
@@ -31,7 +31,9 @@ const MedDetailsPage = () => {
         {medDetails.inStock ? (
           <div>
             <p>Amount in stock: {medDetails.amount}</p>
-            <button type="button">Buy</button>
+            <Link to={`/store/${medId}/checkout`}>
+              <button type="button">Buy</button>
+            </Link>
           </div>
         ) : (
           <p>Out of Stock</p>
