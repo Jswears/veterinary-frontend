@@ -18,6 +18,7 @@ import AdminFormsPage from "./pages/AdminFormsPage";
 import AdminFeedbackPage from "./pages/AdminFeedbackPage";
 import IsAdmin from "./components/isAdmin";
 import { FeedbackPage } from "./pages/FeedbackPage";
+import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
 
 const App = () => {
   return (
@@ -73,11 +74,19 @@ const App = () => {
             </IsPrivate>
           }
         />
-            <Route
+        <Route
           path="/your-feedbacks"
           element={
             <IsPrivate>
-              <FeedbackPage/>
+              <FeedbackPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/your-feedbacks/:fbId"
+          element={
+            <IsPrivate>
+              <FeedbackDetailsPage />
             </IsPrivate>
           }
         />
