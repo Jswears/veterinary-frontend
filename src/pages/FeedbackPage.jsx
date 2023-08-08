@@ -18,7 +18,7 @@ export const FeedbackPage = () => {
   const updateFeedbackRead = async (id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5005/admin/feedback/${id}`,
+        `${env.URL_BASE}/admin/feedback/${id}`,
         {
           read: true,
         }

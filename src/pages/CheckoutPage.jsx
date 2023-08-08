@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import env from "../config";
 
 import CheckoutForm from "../components/CheckoutForm";
 
@@ -11,7 +12,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5005/user/medication/create-payment-intent", {
+    fetch("${env.URL_BASE}/user/medication/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
