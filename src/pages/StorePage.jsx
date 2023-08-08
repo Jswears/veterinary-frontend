@@ -22,7 +22,9 @@ const StorePage = () => {
 
   return (
     <>
+    <div className="container">
       <h1>Welcome to our Store</h1>
+      <div className="content-lg">
       {medication.map((med) => {
         return (
           <div key={med._id}>
@@ -35,6 +37,8 @@ const StorePage = () => {
           </div>
         );
       })}
+      </div>
+      </div>
     </>
   );
 };
