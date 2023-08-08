@@ -11,7 +11,8 @@ export const AdminComplaintsPage = () => {
   const getAllComplaints = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/admin/all-complaints`);
-      setComplaints(response.data);
+ 
+      setComplaints(response.data.filter((feed) => feed.read === false));
     } catch (error) {
       console.log(error);
     }
@@ -43,6 +44,7 @@ export const AdminComplaintsPage = () => {
     <div className="container">
       <h1>Complaints</h1>
       <div className="content-lg">
+        
         {complaints.map((complaint) => (
           <div className="complaint-card" key={complaint._id}>
             <h3>
