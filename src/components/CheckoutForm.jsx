@@ -61,7 +61,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${env.URL_BASE}/store`,
+        return_url: `${env.URL_CHECKOUT}/store`,
       },
     });
 
@@ -93,11 +93,7 @@ export default function CheckoutForm() {
         <PaymentElement id="payment-element" options={paymentElementOptions} />
         <button disabled={isLoading || !stripe || !elements} id="submit">
           <span id="button-text">
-            {isLoading ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay now"
-            )}
+            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
           </span>
         </button>
         {/* Show any error or success messages */}
