@@ -26,6 +26,9 @@ import StorePage from "./pages/StorePage";
 import MedDetailsPage from "./pages/MedDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AdminAddMedPage from "./pages/AdminAddMedPage";
+import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./components/Chatbot/ChatbotStyle"; //
 
 const App = () => {
   return (
@@ -121,7 +124,7 @@ const App = () => {
             </IsPrivate>
           }
         />
-                <Route
+        <Route
           path={"/complaints"}
           element={
             <IsPrivate>
@@ -129,7 +132,7 @@ const App = () => {
             </IsPrivate>
           }
         />
-                <Route
+        <Route
           path="/store"
           element={
             <IsPrivate>
@@ -234,6 +237,7 @@ const App = () => {
           }
         />
       </Routes>
+      <ChatbotComponent />
     </>
   );
 };
