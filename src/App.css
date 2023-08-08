@@ -258,7 +258,8 @@ h3 {
 .pet-card img {
   margin: 0 auto;
   width: 100%;
-  background-size: cover;
+  height: 200px;
+  object-fit : cover;
 }
 
 .pet-card-detail {

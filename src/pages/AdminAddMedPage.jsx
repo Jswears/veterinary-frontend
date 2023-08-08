@@ -36,43 +36,49 @@ const AdminAddMedPage = () => {
 
   return (
     <>
-      <h1>Add Medication</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={medName}
-              onChange={(event) => setMedName(event.target.value)}
-            />
-          </label>
-          <label>
-            Amount:
-            <input
-              type="number"
-              value={amount}
-              onChange={(event) => setAmount(event.target.value)}
-            />
-          </label>
-          <label>
-            Description
-            <input
-              type="text"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-            />
-          </label>
-          <label>
-            Price:
-            <input type="number" value={price} onChange={(event) => setPrice(event.target.value)} />
-          </label>
-          <label>
-            Image:
-            <input type="text" value={image} onChange={(event) => setImage(event.target.value)} />
-          </label>
-          <button type="submit">Add</button>
-        </form>
+      <div className="container">
+        <h1>Add Medication</h1>
+        <div className="content-md">
+          <form onSubmit={handleSubmit} className="form">
+            <label>
+              Name:
+              <input
+                type="text"
+                value={medName}
+                onChange={(event) => setMedName(event.target.value)}
+              />
+            </label>
+            <label>
+              Amount:
+              <input
+                type="number"
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
+              />
+            </label>
+            <label>
+              Description
+              <input
+                type="text"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
+            </label>
+            <label>
+              Price:
+              <input
+                type="number"
+                value={price}
+                onChange={(event) => setPrice(event.target.value)}
+              />
+            </label>
+            <label>
+              Image:
+              <input type="text" value={image} onChange={(event) => setImage(event.target.value)} />
+            </label>
+            <button type="submit">Add</button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -26,8 +26,14 @@ import StorePage from "./pages/StorePage";
 import MedDetailsPage from "./pages/MedDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AdminAddMedPage from "./pages/AdminAddMedPage";
+import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./components/Chatbot/ChatbotStyle"; //
+import { useContext } from "react";
+import { AuthContext } from "./context/auth.context";
 
 const App = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <>
       <NavBar />
@@ -154,6 +160,30 @@ const App = () => {
           }
         />
         <Route
+          path="/store"
+          element={
+            <IsPrivate>
+              <StorePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId"
+          element={
+            <IsPrivate>
+              <MedDetailsPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId/checkout"
+          element={
+            <IsPrivate>
+              <CheckoutPage />
+            </IsPrivate>
+          }
+        />
+        <Route
           path="/admin"
           element={
             <IsAdmin>
@@ -210,6 +240,7 @@ const App = () => {
           }
         />
       </Routes>
+      {isLoggedIn && <ChatbotComponent />}
     </>
   );
 };
