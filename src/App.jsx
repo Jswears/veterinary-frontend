@@ -29,8 +29,11 @@ import AdminAddMedPage from "./pages/AdminAddMedPage";
 import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./components/Chatbot/ChatbotStyle"; //
+import { useContext } from "react";
+import { AuthContext } from "./context/auth.context";
 
 const App = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <>
       <NavBar />
@@ -237,7 +240,7 @@ const App = () => {
           }
         />
       </Routes>
-      <ChatbotComponent />
+      {isLoggedIn && <ChatbotComponent />}
     </>
   );
 };

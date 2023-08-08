@@ -8,10 +8,10 @@ export const theme = {
   headerBgColor: "#fcc2b4",
   headerFontColor: "#9993bd",
   headerFontSize: "15px",
-  botBubbleColor: "#c6d6fb",
+  botBubbleColor: "#9993bd",
   botFontColor: "#fff",
   userBubbleColor: "#f5f8fb",
-  userFontColor: "#9993bd",
+  userFontColor: "#fff",
   width: "200px",
   height: "200px",
 };
