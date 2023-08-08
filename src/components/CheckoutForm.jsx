@@ -85,7 +85,7 @@ export default function CheckoutForm() {
 
   return (
     <div className="checkout-container">
-      <form id="payment-form" onSubmit={handleSubmit}>
+      <form id="payment-form" onSubmit={handleSubmit} className="form">
         <LinkAuthenticationElement
           id="link-authentication-element"
           onChange={(e) => setEmail(e.target.value)}

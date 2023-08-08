@@ -28,7 +28,7 @@ const StorePage = () => {
         <div className="content-lg">
           {medication.map((med) => {
             return (
-              <div key={med._id}>
+              <div className="pet-card" key={med._id}>
                 <Link to={`/store/${med._id}`}>
                   <h3>{med.medName}</h3>
                 </Link>
