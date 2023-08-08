@@ -36,9 +36,10 @@ const AdminAddMedPage = () => {
 
   return (
     <>
+    <div className="container">
       <h1>Add Medication</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className="content-md">
+        <form onSubmit={handleSubmit} className="form">
           <label>
             Name:
             <input
@@ -73,6 +74,7 @@ const AdminAddMedPage = () => {
           </label>
           <button type="submit">Add</button>
         </form>
+      </div>
       </div>
     </>
   );
