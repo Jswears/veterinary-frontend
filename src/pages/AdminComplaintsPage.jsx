@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-const BASE_URL = "http://localhost:5005";
+import env from "../config";
 
 export const AdminComplaintsPage = () => {
 
@@ -10,7 +10,7 @@ export const AdminComplaintsPage = () => {
 
   const getAllComplaints = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/admin/all-complaints`);
+      const response = await axios.get(`${env.URL_BASE}/admin/all-complaints`);
  
       setComplaints(response.data.filter((feed) => feed.read === false));
     } catch (error) {
@@ -22,7 +22,7 @@ export const AdminComplaintsPage = () => {
         
     try {
 
-      const response = await axios.patch(`${BASE_URL}/admin/complaint/${id}`);
+      const response = await axios.patch(`${env.URL_BASE}/admin/complaint/${id}`);
       console.log(response)
       if(response.status===200){
         //refresh 
