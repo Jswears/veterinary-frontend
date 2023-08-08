@@ -2,18 +2,18 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import env from "../config";
-import { Link } from "react-router-dom"; // Added the import statement for Link
+import { Link } from "react-router-dom" // Added the import statement for Link
 
 export const FeedbackPage = () => {
   const { user } = useContext(AuthContext);
   const [feedbacks, setFeedbacks] = useState([]);
-  const [id, setId] = useState(user._id);
+  const [id, setId] = useState(user._id)
 
   const getFeedbacks = async () => {
     const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${id}`);
     console.log(response);
     setFeedbacks(response.data);
-  }; // Added the closing curly brace for getFeedbacks function
+  } // Added the closing curly brace for getFeedbacks function
 
   const updateFeedbackRead = async (id) => {
     try {
@@ -29,7 +29,7 @@ export const FeedbackPage = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
     useEffect(() => {
       getFeedbacks();
@@ -59,6 +59,6 @@ export const FeedbackPage = () => {
           })}
         </div>
       </div>
-    );
-  };
-};
+    )
+  }
+

@@ -1,2 +1,2 @@
-const env = {  URL_BASE: 'http://localhost:5005'}
+const env = {  URL_BASE: import.meta.env.VITE_API}
 export default env
