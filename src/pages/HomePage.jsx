@@ -7,6 +7,7 @@ import {
   faFolderPlus,
   faHistory,
   faFaceAngry,
+  faStore,
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
@@ -22,9 +23,7 @@ const HomePage = () => {
   //get feedback no read
 
   const getFeedbackUnread = async () => {
-    const response = await axios.get(
-      `${env.URL_BASE}/user/feedbacks/${user._id}`
-    );
+    const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${user._id}`);
 
     if (response.status === 200) {
       setFeedback(response.data.filter((feed) => feed.read === false));
@@ -85,7 +84,9 @@ const HomePage = () => {
         </div>{" "}
         {/* Missing closing tag */}
         <div className="button bg2">
-          <Link to={"/store"}> Store</Link>
+          <Link to={"/store"}>
+            <FontAwesomeIcon icon={faStore} /> Store
+          </Link>
         </div>
       </div>
     </>
