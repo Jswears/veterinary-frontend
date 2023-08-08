@@ -24,8 +24,10 @@ const MedDetailsPage = () => {
 
   return (
     <>
-      <div>
-        <h1>{medDetails.medName}</h1>
+      <div className="container">
+      <h1>{medDetails.medName}</h1>
+      <div className="content-md">
+      
         <img src={medDetails.image} alt={medDetails.medName} style={{ height: "150px" }} />
         <p>{medDetails.description}</p>
         <p>Price: {medDetails.price}€</p>
@@ -33,12 +35,13 @@ const MedDetailsPage = () => {
           <div>
             <p>Amount in stock: {medDetails.amount}</p>
             <Link to={`/store/${medId}/checkout`}>
-              <button type="button">Buy</button>
+              Buy
             </Link>
           </div>
         ) : (
           <p>Out of Stock</p>
         )}
+      </div>
       </div>
     </>
   );
