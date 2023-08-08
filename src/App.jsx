@@ -25,6 +25,7 @@ import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
 import StorePage from "./pages/StorePage";
 import MedDetailsPage from "./pages/MedDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import AdminAddMedPage from "./pages/AdminAddMedPage";
 
 const App = () => {
   return (
@@ -120,7 +121,7 @@ const App = () => {
             </IsPrivate>
           }
         />
-                <Route
+        <Route
           path={"/complaints"}
           element={
             <IsPrivate>
@@ -128,7 +129,7 @@ const App = () => {
             </IsPrivate>
           }
         />
-                <Route
+        <Route
           path="/store"
           element={
             <IsPrivate>
@@ -197,6 +198,14 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminFeedbackPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/medication"
+          element={
+            <IsAdmin>
+              <AdminAddMedPage />
             </IsAdmin>
           }
         />
