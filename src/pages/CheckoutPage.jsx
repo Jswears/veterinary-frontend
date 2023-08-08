@@ -12,7 +12,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("${env.URL_BASE}/user/medication/create-payment-intent", {
+    fetch(`${env.URL_BASE}/user/medication/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
