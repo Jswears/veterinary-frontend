@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import env from "../config";
 
 const MedDetailsPage = () => {
   const [medDetails, setMedDetails] = useState({});
@@ -8,7 +9,7 @@ const MedDetailsPage = () => {
 
   const fetchMedDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/user/medication/${medId}`);
+      const response = await axios.get(`${env.URL_BASE}/user/medication/${medId}`);
       if (response.status === 200) {
         setMedDetails(response.data);
       }

@@ -23,7 +23,7 @@ const HomePage = () => {
 
   const getFeedbackUnread = async () => {
     const response = await axios.get(
-      `http://localhost:5005/user/feedbacks/${user._id}`
+      `${env.URL_BASE}/user/feedbacks/${user._id}`
     );
 
     if (response.status === 200) {

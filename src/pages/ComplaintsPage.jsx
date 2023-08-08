@@ -2,8 +2,8 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import env from "../config";
 
-const BASE_URL = "http://localhost:5005";
 
 const ComplaintsPage = () => {
   const { user } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const ComplaintsPage = () => {
     e.preventDefault();
     e.preventDefault();
     try {
-      const response = await axios.post(`${BASE_URL}/user/new-complaint`, {
+      const response = await axios.post(`${env.URL_BASE}/user/new-complaint`, {
         complaint,
         customerId,
       });

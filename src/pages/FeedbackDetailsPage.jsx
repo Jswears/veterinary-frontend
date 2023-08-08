@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import env from "../config";
 
 const FeedbackDetailsPage = () => {
   const [feedback, setFeedback] = useState({});
@@ -8,7 +9,7 @@ const FeedbackDetailsPage = () => {
 
   const fetchFeedback = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/admin/feedback/${fbId}`);
+      const response = await axios.get(`${env.URL_BASE}/admin/feedback/${fbId}`);
       if (response.status === 200) {
         setFeedback(response.data);
       }

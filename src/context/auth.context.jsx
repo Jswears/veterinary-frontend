@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import env from "../config";
 const AuthContext = createContext();
 
 const AuthContextWrapper = (props) => {
@@ -13,7 +14,7 @@ const AuthContextWrapper = (props) => {
     const tokenInStorage = localStorage.getItem("authToken");
     if (tokenInStorage) {
       try {
-        const response = await axios("http://localhost:5005/auth/verify", {
+        const response = await axios(`${env.URL_BASE}/auth/verify`, {
           // IF ERROR CAPITAL A
           headers: { authorization: `Bearer ${tokenInStorage}` },
         });
