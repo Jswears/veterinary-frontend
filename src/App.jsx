@@ -25,6 +25,7 @@ import FeedbackDetailsPage from "./pages/FeedbackDetailsPage";
 import StorePage from "./pages/StorePage";
 import MedDetailsPage from "./pages/MedDetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import AdminAddMedPage from "./pages/AdminAddMedPage";
 
 const App = () => {
   return (
@@ -153,6 +154,30 @@ const App = () => {
           }
         />
         <Route
+          path="/store"
+          element={
+            <IsPrivate>
+              <StorePage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId"
+          element={
+            <IsPrivate>
+              <MedDetailsPage />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/store/:medId/checkout"
+          element={
+            <IsPrivate>
+              <CheckoutPage />
+            </IsPrivate>
+          }
+        />
+        <Route
           path="/admin"
           element={
             <IsAdmin>
@@ -197,6 +222,14 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminFeedbackPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/medication"
+          element={
+            <IsAdmin>
+              <AdminAddMedPage />
             </IsAdmin>
           }
         />

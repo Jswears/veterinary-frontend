@@ -9,7 +9,7 @@ function IsPrivate({ children }) {
 
   //If the page is still loading, then return a p tag until the data arrives
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <i className="loader --1"></i>;
   }
   //If the data has arrived and the user is still not logged IN, then redirect to the login page
   if (!isLoggedIn) {
