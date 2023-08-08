@@ -1,0 +1,21 @@
+.rsc-container {
+  width: 300px !important;
+  height: 300px !important;
+}
+
+/* Style for chatbot container */
+.chatbot-container {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 1000;
+}
+
+/* Style for chatbot avatar */
+.chatbot-avatar {
+  cursor: pointer;
+}
+
+.rsc-content {
+  height: 245px !important;
+}
