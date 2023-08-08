@@ -1,2 +1,2 @@
-const env = {  URL_BASE: import.meta.env.VITE_API}
-export default env
+const env = { URL_BASE: import.meta.env.VITE_API, URL_CHECKOUT: import.meta.env.VITE_CHECKOUT };
+export default env;
