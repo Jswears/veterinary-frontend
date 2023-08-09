@@ -36,7 +36,7 @@ import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
 import AdminEditMedPage from "./pages/AdminEditMedPage";
 
 const App = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
   return (
     <>
       <NavBar />
@@ -219,12 +219,14 @@ const App = () => {
             </IsAdmin>
           }
         />
-         <Route
+        <Route
           path="/admin/customers"
           element={
             <IsAdmin>
               <AdminCustomersListPage />
-              </IsAdmin> } />
+            </IsAdmin>
+          }
+        />
         <Route
           path="/admin/medication-list"
           element={
@@ -250,11 +252,9 @@ const App = () => {
           }
         />
       </Routes>
-      {isLoggedIn && <ChatbotComponent />}
-
+      {isLoggedIn && user.role !== "admin" && <ChatbotComponent />}
       <Footer />
     </>
-       
   );
 };
 
