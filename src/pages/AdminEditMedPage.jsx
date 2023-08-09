@@ -17,9 +17,7 @@ export const AdminEditMedPage = () => {
 
   const getMed = async () => {
     try {
-      const response = await axios.get(
-        `${env.URL_BASE}/user/medication/${medicationId}`
-      );
+      const response = await axios.get(`${env.URL_BASE}/user/medication/${medicationId}`);
       const oneMed = response.data;
       setInStock(oneMed.inStock);
       setMedName(oneMed.medName);
@@ -40,15 +38,15 @@ export const AdminEditMedPage = () => {
     e.preventDefault();
     try {
       setIsDisabled(true);
-      const formData = { medName, amount, description, image, };
+      const formData = { medName, amount, description, image };
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
         formData,
         {
-        headers: {
-          "Content-Type": "multipart/form-data",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      }
       );
       if (response.status === 201) {
         navigate("/admin/medication-list");
