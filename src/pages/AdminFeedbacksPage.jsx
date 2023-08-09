@@ -29,6 +29,7 @@ export const AdminFeedbacksPage = () => {
             return (
                 <>
                   <div className="pet-card">
+                  <p><strong>Customer:</strong>  {feedback.customerId.fullname}</p>
                   <p><strong>Request:</strong> {feedback.formId.request}</p>
                     <p><strong>Diagnosis:</strong> {feedback.medicalHistory}</p>
                     <p><strong>Therapy:</strong> {feedback.terapy}</p>

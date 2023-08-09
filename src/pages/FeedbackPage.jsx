@@ -4,9 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import env from "../config";
 import { Link } from "react-router-dom"; // Added the import statement for Link
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export const FeedbackPage = () => {
   const { user } = useContext(AuthContext);
   const [feedbacks, setFeedbacks] = useState([]);
@@ -15,14 +13,16 @@ export const FeedbackPage = () => {
   const getFeedbacks = async () => {
     const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${id}`);
     setFeedbacks(response.data);
-
   }; // Added the closing curly brace for getFeedbacks function
 
   const updateFeedbackRead = async (id) => {
     try {
-      const response = await axios.patch(`${env.URL_BASE}/admin/feedback/${id}`, {
-        read: true,
-      });
+      const response = await axios.patch(
+        `${env.URL_BASE}/admin/feedback/${id}`,
+        {
+          read: true,
+        }
+      );
       if (response.status === 202) {
         console.log(response.data);
       }
@@ -30,9 +30,6 @@ export const FeedbackPage = () => {
       console.log(error);
     }
   };
-
-
-  
 
   useEffect(() => {
     getFeedbacks();
@@ -43,22 +40,24 @@ export const FeedbackPage = () => {
       <h1> Your Feedback from Clinic</h1>
 
       <div className="content-lg">
-  
         {feedbacks.map((feedback) => {
           return (
             <div className="pet-card " key={feedback._id}>
-              { feedback.read=== false &&   <div className="notify"><FontAwesomeIcon icon={faEnvelope} /></div> }
-             
+              {feedback.read === false && (
+                <div className="notify">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </div>
+              )}
+
               <p>{feedback.formId.request}</p>
               <p>{feedback.medicalHistory}</p>
-              <Link to={`/your-feedbacks/${feedback._id}`}  onClick={() => {
-                    updateFeedbackRead(feedback._id);
-                  }}>
-              
-                 
-                
-                  Details
-           
+              <Link
+                to={`/your-feedbacks/${feedback._id}`}
+                onClick={() => {
+                  updateFeedbackRead(feedback._id);
+                }}
+              >
+                Details
               </Link>
             </div>
           );
