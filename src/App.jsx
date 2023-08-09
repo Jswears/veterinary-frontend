@@ -31,6 +31,9 @@ import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
 import { AdminCustomersListPage } from "./pages/AdminCustomersListPage";
 import { Footer } from "./components/Footer";
+import AdminMedListPage from "./pages/AdminMedListPage";
+import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
+import AdminEditMedPage from "./pages/AdminEditMedPage";
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -221,6 +224,28 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminCustomersListPage />
+              </IsAdmin> } />
+        <Route
+          path="/admin/medication-list"
+          element={
+            <IsAdmin>
+              <AdminMedListPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/medicationDetail/:medicationId"
+          element={
+            <IsAdmin>
+              <AdminMedDetailsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/edit-medication/:medicationId"
+          element={
+            <IsAdmin>
+              <AdminEditMedPage />
             </IsAdmin>
           }
         />

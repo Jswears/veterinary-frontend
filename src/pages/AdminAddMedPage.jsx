@@ -14,7 +14,7 @@ const AdminAddMedPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${env.URL_BASE}/user/medication`, {
+      const response = await axios.post(`${env.URL_BASE}/admin/medication`, {
         medName,
         amount,
         description,
@@ -74,7 +74,11 @@ const AdminAddMedPage = () => {
             </label>
             <label>
               Image:
-              <input type="text" value={image} onChange={(event) => setImage(event.target.value)} />
+              <input
+                type="text"
+                value={image}
+                onChange={(event) => setImage(event.target.value)}
+              />
             </label>
             <button type="submit">Add</button>
           </form>

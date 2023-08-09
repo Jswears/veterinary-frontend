@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import OutStock from "../assets/images/out-of-stock.png";
+import NoImage from "../assets/images/no-image-icon-23494.png";
+
 import env from "../config";
 
 const StorePage = () => {
@@ -33,9 +36,14 @@ const StorePage = () => {
                   <h3>{med.medName}</h3>
                 </Link>
                 <img
-                  src={med.image}
+                  src={
+                    med.image
+                      ? med.image
+                      : med.amount === 0
+                      ? OutStock
+                      : NoImage
+                  }
                   alt={med.medName}
-                  style={{ height: "150px" }}
                 />
                 {med.inStock ? (
                   <p>Amount left: {med.amount}</p>
