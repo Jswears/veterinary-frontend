@@ -38,12 +38,13 @@ export const EditPetPage = () => {
     try {
       setIsDisabled(true);
       const formData = { name, age, specie, image, customerId };
-      const response = await axios.put(
-        `${env.URL_BASE}/user/one-pet/${id}`,
-        formData
-      );
+      const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData);
       if (response.status === 201) {
         navigate("/");
+        setName("");
+        setAge("");
+        setSpecie("");
+        setImage("");
         setIsDisabled(true);
       }
     } catch (error) {

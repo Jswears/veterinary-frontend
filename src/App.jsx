@@ -29,6 +29,9 @@ import AdminAddMedPage from "./pages/AdminAddMedPage";
 import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
+import AdminMedListPage from "./pages/AdminMedListPage";
+import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
+import AdminEditMedPage from "./pages/AdminEditMedPage";
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -234,6 +237,30 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminAddMedPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/medication-list"
+          element={
+            <IsAdmin>
+              <AdminMedListPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/medicationDetail/:medicationId"
+          element={
+            <IsAdmin>
+              <AdminMedDetailsPage />
+            </IsAdmin>
+          }
+        />
+        <Route
+          path="/admin/edit-medication/:medicationId"
+          element={
+            <IsAdmin>
+              <AdminEditMedPage />
             </IsAdmin>
           }
         />

@@ -6,6 +6,7 @@ import {
   faHistory,
   faFaceAngry,
   faPills,
+  faList,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -41,7 +42,9 @@ const AdminPanelPage = () => {
     const response = await axios.get(`${env.URL_BASE}/admin/all-complaints`);
 
     if (response.status === 200) {
-      setComplaint(response.data.filter((complaint) => complaint.read === false));
+      setComplaint(
+        response.data.filter((complaint) => complaint.read === false)
+      );
     }
   };
 
@@ -101,6 +104,12 @@ const AdminPanelPage = () => {
             <Link to="/admin/medication">
               {" "}
               <FontAwesomeIcon icon={faPills} /> Add Medication{" "}
+            </Link>
+          </div>
+          <div className="button bg">
+            <Link to="/admin/medication-list">
+              {" "}
+              <FontAwesomeIcon icon={faList} /> Medication List{" "}
             </Link>
           </div>
         </div>
