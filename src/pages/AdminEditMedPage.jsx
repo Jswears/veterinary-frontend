@@ -10,16 +10,14 @@ export const AdminEditMedPage = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(1);
-  const [inStock, setInStock] = useState(false);
+  const [inStock, setInStock] = useState(undefined);
 
   const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
 
   const getMed = async () => {
     try {
-      const response = await axios.get(
-        `${env.URL_BASE}/user/medication/${medicationId}`
-      );
+      const response = await axios.get(`${env.URL_BASE}/user/medication/${medicationId}`);
       const oneMed = response.data;
       setInStock(amount===0? false: true);
       setMedName(oneMed.medName);
@@ -40,17 +38,22 @@ export const AdminEditMedPage = () => {
     e.preventDefault();
     try {
       setIsDisabled(true);
-      const formData = { medName, amount, description, image, inStock};
-      formData.amount===0 ? formData.inStock=false: formData.inStock=true
-      console.log(formData)
+      const formData = {
+        medName,
+        amount,
+        description,
+        image,
+        inStock,
+        price,
+      };
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
         formData,
         {
-        headers: {
-          "Content-Type": "multipart/form-data",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      }
       );
       if (response.status === 201) {
         navigate("/admin/medication-list");
@@ -100,6 +103,7 @@ export const AdminEditMedPage = () => {
                 }}
               />
             </label>
+            Price:
             <label htmlFor="">
               <input
                 type="text"
