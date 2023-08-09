@@ -38,7 +38,11 @@ export const EditPetPage = () => {
     try {
       setIsDisabled(true);
       const formData = { name, age, specie, image, customerId };
-      const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData);
+      const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      });
       if (response.status === 201) {
         navigate("/");
         setName("");
@@ -109,6 +113,7 @@ export const EditPetPage = () => {
               Image:
               <input
                 type="file"
+                accept="image/png, image/jpeg"
                 onChange={(event) => {
                   setImage(event.target.files[0]);
                 }}

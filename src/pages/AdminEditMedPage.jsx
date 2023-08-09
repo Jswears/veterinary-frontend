@@ -43,7 +43,12 @@ export const AdminEditMedPage = () => {
       const formData = { medName, amount, description, image, };
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
-        formData
+        formData,
+        {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      }
       );
       if (response.status === 201) {
         navigate("/admin/medication-list");

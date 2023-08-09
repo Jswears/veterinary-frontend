@@ -92,6 +92,7 @@ const NewPetPage = () => {
               Image:
               <input
                 type="file"
+                accept="image/png, image/jpeg"
                 onChange={(event) => {
                   setImage(event.target.files[0]);
                 }}
