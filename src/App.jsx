@@ -161,30 +161,6 @@ const App = () => {
           }
         />
         <Route
-          path="/store"
-          element={
-            <IsPrivate>
-              <StorePage />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/store/:medId"
-          element={
-            <IsPrivate>
-              <MedDetailsPage />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/store/:medId/checkout"
-          element={
-            <IsPrivate>
-              <CheckoutPage />
-            </IsPrivate>
-          }
-        />
-        <Route
           path="/admin"
           element={
             <IsAdmin>
