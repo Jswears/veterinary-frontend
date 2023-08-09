@@ -48,6 +48,7 @@ const SignupPage = () => {
           <form onSubmit={handleSubmit} className="form">
             <label htmlFor="fullname">Fullname:</label>
             <input
+              required
               type="text"
               name="fullname"
               value={fullname}
@@ -55,6 +56,7 @@ const SignupPage = () => {
             />
             <label htmlFor="email">Email:</label>
             <input
+              required
               type="email"
               name="email"
               value={email}
@@ -62,6 +64,7 @@ const SignupPage = () => {
             />
             <label htmlFor="password">Password:</label>
             <input
+              required
               type="password"
               name="password"
               value={password}

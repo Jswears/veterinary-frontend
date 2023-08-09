@@ -44,6 +44,7 @@ const NewFormPage = () => {
             <label>
               Request:
               <textarea
+              required
                 cols="30"
                 rows="10"
                 value={request}
