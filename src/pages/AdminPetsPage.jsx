@@ -18,7 +18,10 @@ const AdminPetsPage = () => {
     fetchAllPets();
   }, []);
 
-  return (
+  
+  return !allPets ? (
+    <i className="loader --1"></i>
+    ) : (
     <>
       <div className="container">
         <h1>All Registered Pets</h1>

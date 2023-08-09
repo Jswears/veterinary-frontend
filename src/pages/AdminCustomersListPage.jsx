@@ -31,7 +31,9 @@ const handleDeleteCustomer=async(id)=>{
 }
 
 
-  return (
+  return !customers ? (
+    <i className="loader --1"></i>
+    ) : (
     <div className="container">
     <h1>Customers' List</h1>   
         <div className="content-lg">

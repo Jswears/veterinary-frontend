@@ -16,7 +16,10 @@ export const AdminFeedbacksPage = () => {
           getFeedbacks()
   
       }, [])
-  return (
+ 
+      return !feedbacks ? (
+        <i className="loader --1"></i>
+        ) : (
     <div className="container">
               <h1>All Feedbacks</h1>
        <div className="content-lg">

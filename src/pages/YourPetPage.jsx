@@ -21,7 +21,9 @@ export const YourPetPage = () => {
     getPets();
   }, []);
 
-  return (
+  return !pets ? (
+    <i className="loader --1"></i>
+    ) : (
     <div className="container">
       <h1>Your Pets</h1>
       <div className="content-lg">

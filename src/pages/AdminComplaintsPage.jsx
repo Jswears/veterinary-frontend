@@ -39,7 +39,7 @@ export const AdminComplaintsPage = () => {
     getAllComplaints();
   }, []);
   return !complaints ? (
-    <p>Loading...</p>
+  <i className="loader --1"></i>
   ) : (
     <div className="container">
       <h1>Complaints</h1>

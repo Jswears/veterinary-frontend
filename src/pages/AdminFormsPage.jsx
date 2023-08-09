@@ -35,7 +35,10 @@ console.log(response)
 }
 
 
-  return (
+   
+return !allForms ? (
+  <i className="loader --1"></i>
+  ) : (
     <>
       <div className="container">
         <h1>All Pending Forms</h1>

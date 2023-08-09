@@ -246,7 +246,7 @@ h3 {
   background-color: var(--color-bg);
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  
   padding: 1rem 0.5rem;
   text-align: center;
   display: flex;
@@ -261,6 +261,12 @@ h3 {
 }
 .user-card p{
   padding: 1rem;
+}
+.pet-card h3{
+  text-align: left;
+}
+.pet-card p{
+  text-align: justify;
 }
 .pet-card img {
   margin: 0 auto;
