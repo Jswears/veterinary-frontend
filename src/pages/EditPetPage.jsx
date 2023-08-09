@@ -45,10 +45,6 @@ export const EditPetPage = () => {
       });
       if (response.status === 201) {
         navigate("/");
-        setName("");
-        setAge("");
-        setSpecie("");
-        setImage("");
         setIsDisabled(true);
       }
     } catch (error) {

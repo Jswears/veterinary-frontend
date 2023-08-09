@@ -10,7 +10,7 @@ export const AdminEditMedPage = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(1);
-  const [inStock, setInStock] = useState(false);
+  const [inStock, setInStock] = useState(undefined);
 
   const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,8 @@ export const AdminEditMedPage = () => {
     try {
       const response = await axios.get(`${env.URL_BASE}/user/medication/${medicationId}`);
       const oneMed = response.data;
-      setInStock(oneMed.inStock);
+      amount === 0 ? setInStock(false) : setInStock(true);
+
       setMedName(oneMed.medName);
       setAmount(oneMed.amount);
       setDescription(oneMed.description);
@@ -38,7 +39,13 @@ export const AdminEditMedPage = () => {
     e.preventDefault();
     try {
       setIsDisabled(true);
-      const formData = { medName, amount, description, image };
+      const formData = {
+        medName,
+        amount,
+        description,
+        image,
+        inStock,
+      };
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
         formData,
