@@ -45,6 +45,7 @@ export const AdminEditMedPage = () => {
         description,
         image,
         inStock,
+        price,
       };
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
@@ -103,6 +104,7 @@ export const AdminEditMedPage = () => {
                 }}
               />
             </label>
+            Price:
             <label htmlFor="">
               <input
                 type="text"
