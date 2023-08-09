@@ -41,10 +41,6 @@ export const EditPetPage = () => {
       const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData);
       if (response.status === 201) {
         navigate("/");
-        setName("");
-        setAge("");
-        setSpecie("");
-        setImage("");
         setIsDisabled(true);
       }
     } catch (error) {
