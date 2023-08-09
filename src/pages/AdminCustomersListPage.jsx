@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import env from "../config";
-import { Link } from "react-router-dom";
 
 export const AdminCustomersListPage = () => {
 const [customers, setCustomers] = useState([])

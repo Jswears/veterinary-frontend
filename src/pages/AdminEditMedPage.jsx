@@ -21,7 +21,7 @@ export const AdminEditMedPage = () => {
         `${env.URL_BASE}/user/medication/${medicationId}`
       );
       const oneMed = response.data;
-      setInStock(oneMed.inStock);
+      setInStock(amount===0? false: true);
       setMedName(oneMed.medName);
       setAmount(oneMed.amount);
       setDescription(oneMed.description);
@@ -40,7 +40,9 @@ export const AdminEditMedPage = () => {
     e.preventDefault();
     try {
       setIsDisabled(true);
-      const formData = { medName, amount, description, image, };
+      const formData = { medName, amount, description, image, inStock};
+      formData.amount===0 ? formData.inStock=false: formData.inStock=true
+      console.log(formData)
       const response = await axios.put(
         `${env.URL_BASE}/admin/one-medication/${medicationId}`,
         formData,
