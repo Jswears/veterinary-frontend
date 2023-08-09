@@ -29,12 +29,15 @@ import AdminAddMedPage from "./pages/AdminAddMedPage";
 import ChatbotComponent from "./components/Chatbot/ChatbotComponent";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
+import { AdminCustomersListPage } from "./pages/AdminCustomersListPage";
+import { Footer } from "./components/Footer";
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
   return (
     <>
       <NavBar />
+
       <Routes>
         <Route
           path="/signup"
@@ -237,9 +240,20 @@ const App = () => {
             </IsAdmin>
           }
         />
+         <Route
+          path="/admin/customers"
+          element={
+            <IsAdmin>
+              <AdminCustomersListPage />
+            </IsAdmin>
+          }
+        />
       </Routes>
       {isLoggedIn && <ChatbotComponent />}
+
+      <Footer />
     </>
+       
   );
 };
 

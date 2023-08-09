@@ -6,6 +6,7 @@ import {
   faHistory,
   faFaceAngry,
   faPills,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -101,6 +102,12 @@ const AdminPanelPage = () => {
             <Link to="/admin/medication">
               {" "}
               <FontAwesomeIcon icon={faPills} /> Add Medication{" "}
+            </Link>
+          </div>
+          <div className="button bg2">
+            <Link to="/admin/customers">
+              {" "}
+              <FontAwesomeIcon icon={faUser} /> Customers' list{" "}
             </Link>
           </div>
         </div>

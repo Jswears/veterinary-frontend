@@ -255,6 +255,13 @@ h3 {
   justify-content: center;
   position: relative;
 }
+
+.user-card{
+  padding: 1rem ;
+}
+.user-card p{
+  padding: 1rem;
+}
 .pet-card img {
   margin: 0 auto;
   width: 100%;
@@ -307,6 +314,18 @@ h3 {
 }
 .buttonLink:hover {
   background-color: var(--color-light);
+}
+
+
+footer{
+  margin:0 auto;
+  text-align: center;
+
+}
+footer p{
+  font-weight: bold;
+  color:var(--color-darkest);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 600px) {
   .navbar {
