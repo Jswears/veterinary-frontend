@@ -1,17 +1,12 @@
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import env from "../config";
+import { adminService } from "../services/admin.service";
+
 export const Feedback = ({ feedback }) => {
   const updateFeedbackRead = async (id) => {
     try {
-      const response = await axios.patch(
-        `${env.URL_BASE}/admin/feedback/${id}`,
-        {
-          read: true,
-        }
-      );
+      const response = await adminService.feedbackRead(id);
       if (response.status === 202) {
         console.log(response.data);
       }
