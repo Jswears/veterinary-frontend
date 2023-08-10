@@ -29,9 +29,7 @@ export const YourPetPage = () => {
       <div className="content-lg">
         {pets.map((pet) => {
           return (
-            <>
-            <Pet pet={pet} key={pet._id}  />
-            </>
+            <Pet pet={pet} key={self.crypto.randomUUID()}  />
           );
         })}
       </div>

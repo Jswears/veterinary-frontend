@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import OutStock from "../assets/images/out-of-stock.png";
-import NoImage from "../assets/images/no-image-icon-23494.png";
+
 
 import env from "../config";
+import { Medication } from "../components/Medication";
 
 const StorePage = () => {
   const [medication, setMedication] = useState([]);
@@ -31,27 +31,7 @@ const StorePage = () => {
         <div className="content-lg">
           {medication.map((med) => {
             return (
-              <div className="pet-card" key={med._id}>
-                <Link to={`/store/${med._id}`}>
-                  <h3>{med.medName}</h3>
-                </Link>
-                <img
-                  src={
-                    med.image
-                      ? med.image
-                      : med.amount === 0
-                      ? OutStock
-                      : NoImage
-                  }
-                  alt={med.medName}
-                />
-                {med.inStock ? (
-                  <p>Amount left: {med.amount}</p>
-                ) : (
-                  <p>Currently out of stock</p>
-                )}
-                <p>Price: {med.price}€</p>
-              </div>
+             <Medication med={med} key={self.crypto.randomUUID()} />
             );
           })}
         </div>

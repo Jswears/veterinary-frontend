@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import env from "../config";
+import { Form } from "../components/Form";
 const YourFormsPage = () => {
   const { user } = useContext(AuthContext);
   const [forms, setForms] = useState([]);
@@ -32,10 +33,7 @@ const YourFormsPage = () => {
           <div className="content-lg">
             {forms.map((form) => {
               return (
-                <div className="pet-card" key={form._id}>
-                      <h3>Patient Name: {form.petId && form.petId.name}</h3>
-                  <p>{form.request}</p>
-                </div>
+              <Form  form={form} key={form._id}   />
               );
             })}
           </div>
