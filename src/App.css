@@ -262,6 +262,7 @@ h3 {
 
 .user-card{
   padding: 1rem ;
+  overflow: hidden;
 }
 .user-card p{
   padding: 1rem;
