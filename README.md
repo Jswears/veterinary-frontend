@@ -1,4 +1,4 @@
-# VetApp
+# [VetApp](https://vetappwecare.netlify.app/)
 
 <br>
 
@@ -113,5 +113,11 @@ A veterinary App for easier communication with your Vet.
 ### Collaborators
 
 [Joaquin Swears Salinas](https://github.com/Jswears)
+
 [Nicola Pasa](https://github.com/nicolapasa)
+
 [Andrej Delinac](https://github.com/Jerdnaa)
+
+### Slides
+
+[Google Slides Link]
