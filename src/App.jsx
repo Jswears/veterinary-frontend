@@ -34,6 +34,7 @@ import { Footer } from "./components/Footer";
 import AdminMedListPage from "./pages/AdminMedListPage";
 import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
 import AdminEditMedPage from "./pages/AdminEditMedPage";
+import AdminArchivedFormsPage from "./pages/AdminArchivedFormsPage";
 
 const App = () => {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -248,6 +249,14 @@ const App = () => {
           element={
             <IsAdmin>
               <AdminEditMedPage />
+            </IsAdmin>
+          }
+        />
+          <Route
+          path="/admin/archivedForms"
+          element={
+            <IsAdmin>
+              <AdminArchivedFormsPage />
             </IsAdmin>
           }
         />

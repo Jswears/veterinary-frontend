@@ -39,7 +39,7 @@ h3 {
   color: var(--color-darkest);
   font-weight: bold;
   font-family: "Lora", serif;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 /*layout*/
 
@@ -230,6 +230,9 @@ h3 {
 }
 .bg a {
   color: #e6eaf8;
+}
+.bg a:hover {
+  color: #dddee3;
 }
 .bg1 {
   background-color: var(--color-lightest);
