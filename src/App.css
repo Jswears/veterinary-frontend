@@ -543,3 +543,8 @@ footer p{
   font-size: 14px;
   margin-top: 10px;
 }
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+}

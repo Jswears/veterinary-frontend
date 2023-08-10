@@ -77,12 +77,13 @@ const NewPetPage = () => {
             <label>
               Species:
               <select
+                defaultValue="0"
                 type="text"
                 onChange={(event) => {
                   setSpecie(event.target.value);
                 }}
               >
-                <option value="" selected></option>
+                <option value="0">Choose Species</option>
                 {specieArr.map((specie) => {
                   return <option value={specie}>{specie}</option>;
                 })}

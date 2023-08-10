@@ -34,6 +34,7 @@ import { Footer } from "./components/Footer";
 import AdminMedListPage from "./pages/AdminMedListPage";
 import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
 import AdminEditMedPage from "./pages/AdminEditMedPage";
+import NotFound from "./pages/404Page";
 
 const App = () => {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -251,6 +252,7 @@ const App = () => {
             </IsAdmin>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {isLoggedIn && user.role !== "admin" && <ChatbotComponent />}
       <Footer />
