@@ -120,4 +120,4 @@ A veterinary App for easier communication with your Vet.
 
 ### Slides
 
-[Google Slides Link]
+[Google Slides Link](https://docs.google.com/presentation/d/1Pp5_5jcbKehMuCGfFlufBLhlJhVwrf2JqDoZzylqyGQ/edit?usp=sharing)
