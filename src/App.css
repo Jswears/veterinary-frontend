@@ -257,6 +257,7 @@ h3 {
   gap: 2rem;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 
 .user-card{
