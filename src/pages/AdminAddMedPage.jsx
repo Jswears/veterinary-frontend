@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import env from "../config";
+import { adminService } from "../services/admin.service";
 
 const AdminAddMedPage = () => {
   const [medName, setMedName] = useState("");
@@ -14,19 +15,14 @@ const AdminAddMedPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${env.URL_BASE}/admin/medication`, {
+      const response = await adminService.addMed(
         medName,
         amount,
         description,
         price,
-        image,
-      });
+        image
+      );
       if (response.status === 201) {
-        setMedName("");
-        setAmount(0);
-        setDescription("");
-        setPrice(0);
-        setImage("");
         navigate("/admin");
       }
     } catch (error) {

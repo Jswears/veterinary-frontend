@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import OutStock from "../assets/images/out-of-stock.png";
 import NoImage from "../assets/images/no-image-icon-23494.png";
-import env from "../config";
+import { adminService } from "../services/admin.service";
+import { userService } from "../services/user.service";
 
 const AdminMedDetailsPage = () => {
   const { medicationId } = useParams();
@@ -11,10 +11,18 @@ const AdminMedDetailsPage = () => {
   const [med, setMed] = useState(null);
   const getMed = async () => {
     try {
-      const response = await axios.get(
-        `${env.URL_BASE}/user/medication/${medicationId}`
-      );
+      const response = await userService.medDetails(medicationId);
       setMed(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (medicationId) => {
+    try {
+      const response = await adminService.deleteMed(medicationId);
+      console.log(response);
+      navigate("/admin/medication-list");
     } catch (error) {
       console.log(error);
     }
@@ -23,18 +31,6 @@ const AdminMedDetailsPage = () => {
   useEffect(() => {
     getMed();
   }, []);
-
-  const handleDelete = async (medicationId) => {
-    try {
-      const response = await axios.delete(
-        `${env.URL_BASE}/admin/one-medication/${medicationId}`
-      );
-      console.log(response);
-      navigate("/admin/medication-list");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     med && (

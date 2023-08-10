@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import env from "../config";
 import { Feedback } from "../components/Feedback";
+import { userService } from "../services/user.service";
 
 export const FeedbackPage = () => {
   const { user } = useContext(AuthContext);
@@ -10,10 +9,9 @@ export const FeedbackPage = () => {
   const [id, setId] = useState(user._id);
 
   const getFeedbacks = async () => {
-    const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${id}`);
+    const response = await userService.fetchFeedbacks(id);
     setFeedbacks(response.data);
   }; // Added the closing curly brace for getFeedbacks function
-
 
 
   useEffect(() => {

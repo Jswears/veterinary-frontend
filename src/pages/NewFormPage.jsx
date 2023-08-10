@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import env from "../config";
+import { petService } from "../services/pet.service";
+import { userService } from "../services/user.service";
+
 const NewFormPage = () => {
   const { user } = useContext(AuthContext);
   const [request, setRequest] = useState("");
@@ -12,7 +13,7 @@ const NewFormPage = () => {
   const navigate = useNavigate();
 
   const getPets = async () => {
-    const response = await axios.get(`${env.URL_BASE}/user/your-pets/${customerId}`);
+    const response = await petService.fetchUserPets(customerId);
     console.log(response);
     setPets(response.data);
   };
@@ -23,11 +24,7 @@ const NewFormPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${env.URL_BASE}/user/new-form`, {
-        request,
-        customerId,
-        petId,
-      });
+      const response = await userService.postForm(request, customerId, petId);
       if (response.status === 201) {
         navigate("/your-forms");
       }

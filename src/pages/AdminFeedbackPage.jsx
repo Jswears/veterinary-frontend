@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import env from "../config";
+import { adminService } from "../services/admin.service";
 const AdminFeedbackPage = () => {
   const navigate = useNavigate();
   const { formId } = useParams();
@@ -9,10 +10,11 @@ const AdminFeedbackPage = () => {
   const [diagnosis, setDiagnosis] = useState("");
   const [terapy, setTerapy] = useState("");
   const [tips, setTips] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const fetchOneForm = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/admin/form/${formId}`);
+      const response = await adminService.fetchForm(formId);
       setForm(response.data);
     } catch (error) {
       console.log(error);
@@ -22,20 +24,21 @@ const AdminFeedbackPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${env.URL_BASE}/admin/new-feedback`, {
-        medicalHistory: diagnosis,
+      const response = await adminService.sendFeedback(
+        diagnosis,
         terapy,
         tips,
-        customerId: form.customerId,
-        formId: form._id,
-      });
-      if (response.status === 201) {
-        console.log(response.data.message);
+        form
+      );
+      console.log(response);
+      if (response && response.status === 201) {
         navigate("/admin");
+      } else {
+        navigate("/admin/all-forms");
       }
-      navigate("/admin/all-forms");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -55,6 +58,7 @@ const AdminFeedbackPage = () => {
             <label>
               Diagnosis:
               <textarea
+                required
                 cols="30"
                 rows="10"
                 value={diagnosis}
@@ -64,22 +68,25 @@ const AdminFeedbackPage = () => {
 
             <label>
               Therapy:
-              <input
+              <textarea
+                required
                 type="text"
                 value={terapy}
                 onChange={(event) => setTerapy(event.target.value)}
-              />
+              ></textarea>
             </label>
 
             <label>
               Tips:
               <textarea
+                required
                 cols="30"
                 rows="10"
                 value={tips}
                 onChange={(event) => setTips(event.target.value)}
               ></textarea>
             </label>
+            <p className="erorr-message">{errorMessage && errorMessage}</p>
             <button type="submit">Send Feedback</button>
           </form>
         </div>

@@ -13,6 +13,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
 import env from "../config";
 import axios from "axios";
+import { userService } from "../services/user.service";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const HomePage = () => {
   //get feedback no read
 
   const getFeedbackUnread = async () => {
-    const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${user._id}`);
+    const response = await userService.fetchFeedbacks(user._id);
 
     if (response.status === 200) {
       setFeedback(response.data.filter((feed) => feed.read === false));

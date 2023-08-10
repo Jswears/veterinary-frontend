@@ -11,37 +11,33 @@ import {
   faArchive,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import env from "../config";
+import { adminService } from "../services/admin.service";
 
 const AdminPanelPage = () => {
   const [forms, setForms] = useState([]);
-
+  const [feedback, setFeedback] = useState([]);
+  const [complaint, setComplaint] = useState([]);
   // Get forms with no read
   // hola
   const getFormUnread = async () => {
-    const response = await axios.get(`${env.URL_BASE}/admin/all-forms`);
-
+    const response = await adminService.fetchForms();
     if (response.status === 200) {
       setForms(response.data.filter((form) => form.read === false));
     }
   };
 
-  const [feedback, setFeedback] = useState([]);
-
   // Get feedback with no read
   const getFeedbackUnread = async () => {
-    const response = await axios.get(`${env.URL_BASE}/admin/all-feedback`);
+    const response = await adminService.fetchFeedbacks();
 
     if (response.status === 200) {
       setFeedback(response.data.filter((feed) => feed.read === false));
     }
   };
 
-  const [complaint, setComplaint] = useState([]);
   // Get complaints with no read
   const getComplaintsUnread = async () => {
-    const response = await axios.get(`${env.URL_BASE}/admin/all-complaints`);
+    const response = await adminService.fetchComplaints();
 
     if (response.status === 200) {
       setComplaint(

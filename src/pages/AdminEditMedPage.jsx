@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import env from "../config";
+import { adminService } from "../services/admin.service";
+import { userService } from "../services/user.service";
 
 export const AdminEditMedPage = () => {
   const { medicationId } = useParams();
@@ -17,9 +17,9 @@ export const AdminEditMedPage = () => {
 
   const getMed = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/user/medication/${medicationId}`);
+      const response = await userService.fetchOneMed(medicationId);
       const oneMed = response.data;
-      setInStock(amount===0? false: true);
+      setInStock(amount === 0 ? false : true);
       setMedName(oneMed.medName);
       setAmount(oneMed.amount);
       setDescription(oneMed.description);
@@ -46,15 +46,7 @@ export const AdminEditMedPage = () => {
         inStock,
         price,
       };
-      const response = await axios.put(
-        `${env.URL_BASE}/admin/one-medication/${medicationId}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await adminService.editMed(formData, medicationId);
       if (response.status === 201) {
         navigate("/admin/medication-list");
         setIsDisabled(true);
