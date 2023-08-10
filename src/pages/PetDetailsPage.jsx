@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { petService } from "../services/pet.service";
+import NoPetImage from "../assets/images/nopetimg.png";
 
 export const PetDetailsPage = () => {
   const { id } = useParams("id");
@@ -36,7 +37,7 @@ export const PetDetailsPage = () => {
     <div className="container">
       <div className="content-lg">
         <div className="pet-card-detail">
-          <img src={pet.image} />
+          <img src={pet.image ? pet.image : NoPetImage} />
         </div>
         <div className="sideRight">
           <p>
