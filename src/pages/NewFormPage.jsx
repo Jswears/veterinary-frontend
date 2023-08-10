@@ -44,7 +44,7 @@ const NewFormPage = () => {
             <label>
               Request:
               <textarea
-              required
+                required
                 cols="30"
                 rows="10"
                 value={request}
@@ -59,14 +59,15 @@ const NewFormPage = () => {
                 setPetId(event.target.value);
               }}
             >
-              <option value="" selected>
-                {" "}
+              <option key="empty" value="">
+                Choose Your Pet
               </option>
               {pets.map((pet) => {
                 return (
-                  <>
-                    <option value={pet._id}> {pet.name} </option>
-                  </>
+                  // THIS WORKS DONT BREAK
+                  <option key={pet._id} value={pet._id}>
+                    {pet.name}
+                  </option>
                 );
               })}
             </select>

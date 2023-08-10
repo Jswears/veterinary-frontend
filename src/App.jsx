@@ -34,6 +34,7 @@ import { Footer } from "./components/Footer";
 import AdminMedListPage from "./pages/AdminMedListPage";
 import AdminMedDetailsPage from "./pages/AdminMedDetailPage";
 import AdminEditMedPage from "./pages/AdminEditMedPage";
+import NotFound from "./pages/404Page";
 import AdminArchivedFormsPage from "./pages/AdminArchivedFormsPage";
 
 const App = () => {
@@ -252,7 +253,8 @@ const App = () => {
             </IsAdmin>
           }
         />
-          <Route
+        <Route path="*" element={<NotFound />} />
+        <Route
           path="/admin/archivedForms"
           element={
             <IsAdmin>
