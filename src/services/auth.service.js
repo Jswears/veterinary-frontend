@@ -11,7 +11,7 @@ export const authService = {
       });
       return response;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
   logIn: async (email, password) => {
@@ -22,17 +22,17 @@ export const authService = {
       });
       return response;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
-  verify: async(tokenInStorage) => {
-try {
-    const response = await axios(`${env.URL_BASE}/auth/verify`, {
+  verify: async (tokenInStorage) => {
+    try {
+      const response = await axios(`${env.URL_BASE}/auth/verify`, {
         headers: { authorization: `Bearer ${tokenInStorage}` },
       });
       return response;
-} catch (error) {
-    console.log(error)
-}
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
