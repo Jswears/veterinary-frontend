@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Link } from "react-router-dom";
 import env from "../config";
+import { Pet } from "../components/Pet";
 export const YourPetPage = () => {
   const { user } = useContext(AuthContext);
   const [pets, setPets] = useState([]);
@@ -29,12 +29,9 @@ export const YourPetPage = () => {
       <div className="content-lg">
         {pets.map((pet) => {
           return (
-            <div className="pet-card" key={pet._id}>
-              <img src={pet.image} />
-              <h3>{pet.name}</h3>
-
-              <Link to={`/detailPet/${pet._id}`}>Details</Link>
-            </div>
+            <>
+            <Pet pet={pet} key={pet._id}  />
+            </>
           );
         })}
       </div>

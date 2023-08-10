@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import env from "../config";
+import { Pet } from "../components/Pet";
 const AdminPetsPage = () => {
   const [allPets, setAllPets] = useState([]);
 
@@ -28,13 +29,7 @@ const AdminPetsPage = () => {
         <div className="content-lg">
           {allPets.map((pet) => {
             return (
-              <div className="pet-card" key={pet._id}>
-                <h3>{pet.name}</h3>
-                <img src={pet.image} />
-                <h3>Owner: {pet.customerId && pet.customerId.fullname} </h3>
-                <p>Age: {pet.age}</p>
-                <p>Specie: {pet.specie}</p>
-              </div>
+              <Pet pet={pet} key={pet._id}  />
             );
           })}
         </div>
