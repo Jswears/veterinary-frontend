@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import {  useNavigate, useParams } from "react-router-dom";
-import env from "../config";
+import { useNavigate, useParams } from "react-router-dom";
+import { petService } from "../services/pet.service";
 
 export const EditPetPage = () => {
   const specieArr = ["dog", "cat", "turtle", "rabbit"];
@@ -18,7 +17,7 @@ export const EditPetPage = () => {
 
   const getPet = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/user/one-pet/${id}`);
+      const response = await petService.fetchOnePet(id);
       const onePet = response.data;
       setName(onePet.name);
       setAge(onePet.age);
@@ -38,11 +37,7 @@ export const EditPetPage = () => {
     try {
       setIsDisabled(true);
       const formData = { name, age, specie, image, customerId };
-      const response = await axios.put(`${env.URL_BASE}/user/one-pet/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      });
+      const response = await petService.updatePet(id, formData);
       if (response.status === 201) {
         navigate("/");
         setIsDisabled(true);

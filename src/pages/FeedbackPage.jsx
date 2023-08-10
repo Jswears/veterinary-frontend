@@ -1,28 +1,23 @@
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import env from "../config";
 import { Link } from "react-router-dom"; // Added the import statement for Link
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { userService } from "../services/user.service";
+import { adminService } from "../services/admin.service";
 export const FeedbackPage = () => {
   const { user } = useContext(AuthContext);
   const [feedbacks, setFeedbacks] = useState([]);
   const [id, setId] = useState(user._id);
 
   const getFeedbacks = async () => {
-    const response = await axios.get(`${env.URL_BASE}/user/feedbacks/${id}`);
+    const response = await userService.fetchFeedbacks(id);
     setFeedbacks(response.data);
   }; // Added the closing curly brace for getFeedbacks function
 
   const updateFeedbackRead = async (id) => {
     try {
-      const response = await axios.patch(
-        `${env.URL_BASE}/admin/feedback/${id}`,
-        {
-          read: true,
-        }
-      );
+      const response = await adminService.feedbackRead(id);
       if (response.status === 202) {
         console.log(response.data);
       }

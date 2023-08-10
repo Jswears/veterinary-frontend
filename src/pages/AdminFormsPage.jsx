@@ -1,15 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faMedkit } from "@fortawesome/free-solid-svg-icons";
-import env from "../config";
+import { adminService } from "../services/admin.service";
+
 const AdminFormsPage = () => {
   const [allForms, setAllForms] = useState([]);
 
   const fetchAllForms = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/admin/all-forms`);
+      const response = await adminService.fetchForms();
 
       if (response.status === 200) {
         setAllForms(response.data.filter((feed) => feed.read === false));
@@ -23,21 +23,17 @@ const AdminFormsPage = () => {
     fetchAllForms();
   }, []);
 
-const updateReadForm=async(id)=>{
+  const updateReadForm = async (id) => {
+    try {
+      const response = await adminService.readForm(id);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-try {
-const response= await axios.patch(`${env.URL_BASE}/admin/form/${id}`)
-console.log(response)
-} catch (error) {
-  console.log(error)
-}
-
-}
-
-
-   
-return !allForms ? (
-  <i className="loader --1"></i>
+  return !allForms ? (
+    <i className="loader --1"></i>
   ) : (
     <>
       <div className="container">
@@ -51,7 +47,12 @@ return !allForms ? (
                   <FontAwesomeIcon icon={faMedkit} />
                   <p>{form.request}</p>
                   <div className="small-button">
-                    <Link to={`/admin/all-forms/${form._id}`}  onClick={()=>{updateReadForm(form._id)}}   >
+                    <Link
+                      to={`/admin/all-forms/${form._id}`}
+                      onClick={() => {
+                        updateReadForm(form._id);
+                      }}
+                    >
                       {" "}
                       <FontAwesomeIcon icon={faReply} /> Give feedback
                     </Link>

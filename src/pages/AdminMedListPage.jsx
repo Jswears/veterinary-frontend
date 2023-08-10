@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import env from "../config";
-import axios from "axios";
 import OutStock from "../assets/images/out-of-stock.png";
 import NoImage from "../assets/images/no-image-icon-23494.png";
 import { Link } from "react-router-dom";
+import { userService } from "../services/user.service";
 
 const AdminMedListPage = () => {
   const [medList, setMedList] = useState();
 
   const fetchMedDetails = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/user/medication`);
+      const response = await userService.fetchAllMeds();
       if (response.status === 200) {
         setMedList(response.data);
       }

@@ -1,9 +1,7 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import env from "../config";
-
+import { userService } from "../services/user.service";
 
 const ComplaintsPage = () => {
   const { user } = useContext(AuthContext);
@@ -18,10 +16,7 @@ const ComplaintsPage = () => {
     e.preventDefault();
     e.preventDefault();
     try {
-      const response = await axios.post(`${env.URL_BASE}/user/new-complaint`, {
-        complaint,
-        customerId,
-      });
+      const response = await userService.postComplaint(complaint, customerId);
       if (response.status === 201) {
         navigate("/");
         return response.data;

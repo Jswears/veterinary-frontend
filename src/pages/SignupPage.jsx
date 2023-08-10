@@ -1,8 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import axios from "axios";
-import env from "../config";
+import { authService } from "../services/auth.service";
 
 const SignupPage = () => {
   const [fullname, setFullname] = useState("");
@@ -19,24 +17,12 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const requestBody = { fullname, email, password };
-      const response = await axios.post(
-        `${env.URL_BASE}/auth/signup`,
-        requestBody
-      );
-
+      const response = await authService.signUp(fullname, email, password);
       if (response.status === 201) {
         navigate("/login");
-      } else {
-        setErrorMessage(response.data.message);
       }
     } catch (error) {
-      if (error.response && error.response.data) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        console.log(error);
-        setErrorMessage("Error");
-      }
+      setErrorMessage(error.response.data.message);
     }
   };
 

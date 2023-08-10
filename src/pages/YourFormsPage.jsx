@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
-import env from "../config";
+import { userService } from "../services/user.service";
 const YourFormsPage = () => {
   const { user } = useContext(AuthContext);
   const [forms, setForms] = useState([]);
@@ -9,7 +8,7 @@ const YourFormsPage = () => {
 
   const fetchForms = async () => {
     try {
-      const response = await axios.get(`${env.URL_BASE}/user/your-forms/${id}`);
+      const response = await userService.yourForms(id);
 
       setForms(response.data);
       console.log(response.data);
@@ -23,7 +22,7 @@ const YourFormsPage = () => {
   }, []);
 
   if (!forms) {
- return   <i className="loader --1"></i>
+    return <i className="loader --1"></i>;
   } else {
     return (
       <>
@@ -33,7 +32,7 @@ const YourFormsPage = () => {
             {forms.map((form) => {
               return (
                 <div className="pet-card" key={form._id}>
-                      <h3>Patient Name: {form.petId && form.petId.name}</h3>
+                  <h3>Patient Name: {form.petId && form.petId.name}</h3>
                   <p>{form.request}</p>
                 </div>
               );
