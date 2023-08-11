@@ -26,7 +26,9 @@ const AdminFormsPage = () => {
   const updateReadForm = async (id) => {
     try {
       const response = await adminService.readForm(id);
-      console.log(response);
+      if(response.status === 202) {
+        console.log('Successfully updated')
+      }
     } catch (error) {
       console.log(error);
     }

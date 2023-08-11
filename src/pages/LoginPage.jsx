@@ -15,7 +15,6 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await authService.logIn(email, password);
-      console.log(response);
       if (response.status === 202) {
         storeToken(response.data.token);
         authenticateUser();

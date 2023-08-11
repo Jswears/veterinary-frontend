@@ -22,7 +22,9 @@ export const PetDetailsPage = () => {
   const handleDelete = async (id) => {
     try {
       const response = await petService.deleteOnePet(id);
-      console.log(response);
+      if (response.status === 201) {
+        console.log("Deleted successfully");
+      }
       navigate("/");
     } catch (error) {
       console.log(error);

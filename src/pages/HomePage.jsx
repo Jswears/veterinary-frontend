@@ -11,8 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
-import env from "../config";
-import axios from "axios";
 import { userService } from "../services/user.service";
 
 const HomePage = () => {

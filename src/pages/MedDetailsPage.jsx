@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { userService } from "../services/user.service";
+import OutStock from "../assets/images/out-of-stock.png";
 
 const MedDetailsPage = () => {
   const [medDetails, setMedDetails] = useState({});
@@ -27,7 +28,7 @@ const MedDetailsPage = () => {
         <h1>{medDetails.medName}</h1>
         <div className="content-md">
           <img
-            src={medDetails.image}
+            src={!medDetails.inStock ? OutStock : medDetails.image}
             alt={medDetails.medName}
             style={{ height: "150px" }}
           />

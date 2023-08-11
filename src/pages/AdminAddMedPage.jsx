@@ -1,7 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import env from "../config";
 import { adminService } from "../services/admin.service";
 
 const AdminAddMedPage = () => {

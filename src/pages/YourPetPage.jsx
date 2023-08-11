@@ -10,7 +10,6 @@ export const YourPetPage = () => {
     try {
       const response = await petService.yourPets(user._id);
       setPets(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import ChatBot from "react-simple-chatbot";
 import { theme } from "./ChatbotStyle"; //
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import BotLogo from "../../assets/images/botlogo.png";
 import { useState } from "react";
 
@@ -106,7 +106,11 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can create a new form to request feedback from
-                    veterinary <Link to={"/new-form"}> here</Link>
+                    veterinary{" "}
+                    <NavLink className="here-text" to={"/new-form"}>
+                      {" "}
+                      here
+                    </NavLink>
                   </div>
                 ),
                 trigger: "3",
@@ -118,7 +122,12 @@ const ChatbotComponent = () => {
                   <div>
                     {" "}
                     You can see your forms here and check if they were read or
-                    received any feedback<Link to={"/your-forms"}> Forms</Link>.
+                    received any feedback
+                    <NavLink className="here-text" to={"/your-forms"}>
+                      {" "}
+                      Forms
+                    </NavLink>
+                    .
                   </div>
                 ),
                 trigger: "3",
@@ -129,7 +138,10 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can register a new pet
-                    <Link to={"/new-pet"}> here</Link>
+                    <NavLink className="here-text" to={"/new-pet"}>
+                      {" "}
+                      here
+                    </NavLink>
                   </div>
                 ),
                 trigger: "3",
@@ -140,7 +152,11 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can see your registered pets{" "}
-                    <Link to={"/your-pets"}> here</Link>.
+                    <NavLink className="here-text" to={"/your-pets"}>
+                      {" "}
+                      here
+                    </NavLink>
+                    .
                   </div>
                 ),
                 trigger: "3",
@@ -151,7 +167,12 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can see the feedback received from veterinary doctors
-                    here. <Link to={"/your-feedbacks"}> here</Link>.
+                    here.{" "}
+                    <NavLink className="here-text" to={"/your-feedbacks"}>
+                      {" "}
+                      here
+                    </NavLink>
+                    .
                   </div>
                 ),
                 trigger: "3",
@@ -162,7 +183,11 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can submit your complaints{" "}
-                    <Link to={"/complaints"}> here.</Link>.
+                    <NavLink className="here-text" to={"/complaints"}>
+                      {" "}
+                      here.
+                    </NavLink>
+                    .
                   </div>
                 ),
                 trigger: "3",
@@ -173,7 +198,11 @@ const ChatbotComponent = () => {
                 component: (
                   <div>
                     You can buy medicine from our store.{" "}
-                    <Link to={"/store"}> here</Link>.
+                    <NavLink className="here-text" to={"/store"}>
+                      {" "}
+                      here
+                    </NavLink>
+                    .
                   </div>
                 ),
                 trigger: "3",

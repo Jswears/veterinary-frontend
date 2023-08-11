@@ -14,6 +14,7 @@ const NewPetPage = () => {
   const [image, setImage] = useState("");
   const [id, setId] = useState(user._id);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ const NewPetPage = () => {
         setIsDisabled(true);
       }
     } catch (error) {
+      setErrorMessage(error.response.data.message);
       console.log(error);
     } finally {
       setIsDisabled(false);
@@ -96,6 +98,7 @@ const NewPetPage = () => {
                 name="image"
               />
             </label>
+            <p className="error-message">{errorMessage && errorMessage}</p>
             <button type="submit" disabled={isDisabled}>
               Add
             </button>

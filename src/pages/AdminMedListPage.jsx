@@ -29,12 +29,7 @@ const AdminMedListPage = () => {
           {medList.map((med) => (
             <div className="pet-card" key={med._id}>
               <h3>{med.medName}</h3>
-              <img
-                src={
-                  med.image ? med.image : med.amount === 0 ? OutStock : NoImage
-                }
-                alt=""
-              />
+              <img src={med.image ? med.image : NoImage} alt="" />
 
               <p>Description: {med.description}</p>
               <p>Stock: {med.amount === 0 ? "Needs Restock" : med.amount}</p>

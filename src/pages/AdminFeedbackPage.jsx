@@ -1,7 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import env from "../config";
 import { adminService } from "../services/admin.service";
 const AdminFeedbackPage = () => {
   const navigate = useNavigate();
@@ -30,7 +28,6 @@ const AdminFeedbackPage = () => {
         tips,
         form
       );
-      console.log(response);
       if (response && response.status === 201) {
         navigate("/admin");
       } else {

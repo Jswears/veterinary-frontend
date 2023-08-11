@@ -1,7 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import env from "../config";
 import { adminService } from "../services/admin.service";
 
 export const AdminComplaintsPage = () => {
@@ -23,7 +21,6 @@ export const AdminComplaintsPage = () => {
   const handleComplainsRead = async (id) => {
     try {
       const response = await adminService.complaintsRead(id);
-      console.log(response);
       if (response.status === 200) {
         //refresh
         navigate(`/admin/all-complaints`);

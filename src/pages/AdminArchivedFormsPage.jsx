@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faMedkit } from "@fortawesome/free-solid-svg-icons";
 import env from "../config";
@@ -27,7 +26,9 @@ const updateReadForm=async(id)=>{
 
 try {
 const response= await axios.patch(`${env.URL_BASE}/admin/form/${id}`)
-console.log(response)
+if(response) {
+  console.log('Success')
+}
 } catch (error) {
   console.log(error)
 }

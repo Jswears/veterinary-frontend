@@ -15,7 +15,7 @@ export const petService = {
       );
       return response;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
   fetchOnePet: async (id) => {

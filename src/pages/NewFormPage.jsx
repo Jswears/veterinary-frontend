@@ -14,7 +14,6 @@ const NewFormPage = () => {
 
   const getPets = async () => {
     const response = await petService.fetchUserPets(customerId);
-    console.log(response);
     setPets(response.data);
   };
   useEffect(() => {

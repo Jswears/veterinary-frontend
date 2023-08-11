@@ -21,7 +21,9 @@ const AdminMedDetailsPage = () => {
   const handleDelete = async (medicationId) => {
     try {
       const response = await adminService.deleteMed(medicationId);
-      console.log(response);
+      if (response.status === 201) {
+        console.log("Successfully deleted");
+      }
       navigate("/admin/medication-list");
     } catch (error) {
       console.log(error);
