@@ -50,7 +50,7 @@ const NewPetPage = () => {
     <>
       <div className="container">
         <div className="content-md">
-          <h1>Make new pet</h1>
+          <h1>Add a pet</h1>
           <form onSubmit={handleSubmit} className="form">
             <label>
               Name:
